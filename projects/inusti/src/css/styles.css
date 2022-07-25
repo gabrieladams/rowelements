@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-base font-normal leading-[34px]
+    text-base-font-color overflow-hidden bg-white;
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* HEADER */
+  h1,
+  h2,
+  h3,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-2 font-bold leading-[65px] text-header-font-color;
+  }
+
+  [x-cloak] {
+    @apply hidden;
+  }
+}
+
+@layer components {
+  /* * {
+    @apply transition-all duration-300 ease-linear;
+  } */
+
+  /* LAYOUT */
+  .container-fluid {
+    @apply max-w-full;
+  }
+
+  .row {
+    @apply flex flex-wrap;
+  }
+
+  .col {
+    @apply px-[15px];
+  }
+
+  /* BUTTON */
+  .btn {
+    @apply inline-block border-none font-bold leading-[18px] uppercase text-center tracking-[1.4px] text-white bg-primary-color transition-all duration-[350ms];
+  }
+
+  .btn:hover {
+    @apply bg-[#da6900] shadow-btn;
+  }
+
+  .btn-sm {
+    @apply py-[18px] px-[30px] text-[12px];
+  }
+
+  .btn-lg {
+    @apply py-[30px] px-[50px] text-[14px];
+  }
+
+  /* NAV-MENU - UPTO LG SCREENS(991px) */
+  .nav-menu.upto-lg-screens {
+    @apply hidden lg:block;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item {
+    @apply inline-block py-[22px] px-5 leading-normal;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item a,
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a {
+    @apply relative inline-block font-medium text-nav-item-font-color;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.current-page a {
+    @apply text-white;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item a:hover {
+    @apply text-white;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu:hover a {
+    @apply text-white;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a .underline {
+    @apply absolute bottom-[-2px] left-0 inline-block w-0 h-[2px] opacity-0 bg-primary-color transition-all duration-[350ms];
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu.current-page a .underline,
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu:hover a .underline {
+    @apply w-full opacity-100;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a .chevron {
+    @apply relative top-[1px] inline-block ml-[3px] w-2.5 h-2 text-[14px];
+  }
+
+  /* NAV-MENU - LG SCREENS AND ABOVE(992px) */
+  .nav-menu.lg-screens-and-above {
+    @apply fixed top-0 bottom-0 left-[-300px] z-50 shadow-upto-lg-screens-nav-menu p-5 w-[300px] max-w-[85%] h-full invisible opacity-0 bg-white transition-all duration-[250ms] ease-linear;
+  }
+
+  .nav-menu.lg-screens-and-above.open {
+    @apply left-0 visible opacity-100;
+  }
+
+  .nav-menu.lg-screens-and-above .nav-item {
+    @apply relative border-b border-[rgba(0,0,0,.1)];
+  }
+
+  .nav-menu.lg-screens-and-above .nav-item a {
+    @apply block px-2 py-3 text-[16px] font-medium text-header-font-color transition-colors duration-100 ease-linear;
+  }
+
+  .nav-menu.lg-screens-and-above .nav-item a:hover,
+  .nav-menu.lg-screens-and-above .nav-item.current-page a {
+    @apply text-primary-color;
+  }
+
+  .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .toggle-sub-menu-btn {
+    @apply absolute top-3 right-0 w-[30px] h-[30px] text-[#85827d];
+  }
+
+  .nav-menu.lg-screens-and-above .nav-item a,
+  .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .toggle-sub-menu-btn {
+    @apply transition-colors duration-100 ease-linear;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn:hover {
+    @apply text-primary-color;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn
+    .icon {
+    @apply absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 transition-all duration-100 ease-linear;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn.close
+    .plus-icon {
+    @apply visible opacity-100;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn.open
+    .plus-icon {
+    @apply invisible opacity-0;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn.close
+    .minus-icon {
+    @apply invisible opacity-0;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .toggle-sub-menu-btn.open
+    .minus-icon {
+    @apply visible opacity-100;
+  }
+
+  nav-menu.lg-screens-and-above .close-btn {
+    @apply absolute top-[100px] right-0 z-50 block border border-[#e4e4e4] shadow-close-nav-menu-btn bg-white;
+  }
+
+  /* SECTION HEADING */
+  .section-heading {
+    @apply mb-[15px];
+  }
+
+  .section-heading .title {
+    @apply mb-10 text-[50px] leading-[60px];
+  }
+
+  .section-heading .title .sub-title {
+    @apply relative inline-block mb-[15px] font-medium leading-4 uppercase tracking-[1.6px];
+  }
+
+  .section-heading .title .sub-title .underline {
+    @apply absolute bottom-[3px] left-0 w-full h-[2px] bg-primary-color;
+  }
+}

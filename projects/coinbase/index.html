@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GOOGLE FONTS IMPORT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- TAILWINDCSS LOCAL IMPORT -->
+    <link rel="stylesheet" href="./assets/css/output.css" />
+    <!-- TAILWINDCSS CDN IMPORT -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    
+    <!-- ALPINE.JS CDN IMPORT - LOCAL IMPORT AT THE BOTTOM -->
+    <!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
+    <title>Coinbase</title>
+  </head>
+  <body>
+    <!-- HEADER START -->
+    <header
+      x-init="
+      window.onscroll = function() { 
+
+      if(window.pageYOffset > $el.offsetHeight) {
+        $el.classList.remove('lg:static', 'lg:top-[initial]', 'animate-none');
+        $el.classList.add('lg:animate-slideDown')
+
+      } else {
+        $el.classList.remove('lg:animate-slideDown');
+        $el.classList.add('lg:static', 'lg:top-[initial]' );
+      }
+    }
+    "
+      x-data="{
+        navItems: {
+          topBar: [
+            {
+                name: 'Explore',
+                isLink: true
+            },
+            {
+                name: 'Learn',
+                isLink: true
+            },
+            {
+                name: 'Individuals',
+                isLink: false
+            },
+            {
+                name: 'Businesses',
+                isLink: false
+            },
+            {
+                name: 'Developers',
+                isLink: false
+            },
+            {
+                name: 'Company',
+                isLink: false
+            }
+         ],
+
+         bottomBar: [
+            {
+                name: 'Mission & Culture',
+                isLink: true
+            },
+            {
+                name: 'Interviewing at Coinbase',
+                isLink: true
+            },
+            {
+                name: 'Life at Coinbase',
+                isLink: true
+            },
+            {
+                name: 'Belonging at Coinbase',
+                isLink: true
+            }
+          ]
+        }, 
+
+        learningArticles: [ 
+          {
+            title: 'Tips & Tutorials'
+          },
+          {
+            title: 'Crypto Basics'
+          },
+          {
+            title: 'Market Updates'
+          }
+        ],
+
+        products: {
+          individual: [
+            {
+              id: 1,
+              name: 'Buy and sell',
+              description: 'Buy, sell and use crypto'
+            }, 
+            {
+              id: 2,
+              name: 'Earn',
+              description: 'Learn and earn crypto'
+            }, 
+            {
+              id: 3,
+              name: 'Private Client',
+              description: 'For trusts, family offices, UHNWIs'
+            }, 
+            {
+              id: 4,
+              name: 'NFT',
+              description: 'Create, collect, connect'
+            }, 
+            {
+              id: 5,
+              name: 'Wallet',
+              description: 'The best self-hosted crypto wallet'
+            }, 
+            {
+              id: 6,
+              name: 'Card',
+              description: 'Spend crypto, earn crypto rewards'
+            }, 
+            {
+              id: 7,
+              name: 'Borrow',
+              description: 'Borrow cash using Bitcoin as collateral'
+            }, 
+            {
+              id: 8,
+              name: 'Derivatives',
+              description: 'Trade an accessible market'
+            }, 
+          ],
+
+          business: [
+            { 
+              id: 1,
+              name: 'Institutional',
+              description: 'Solutions for institutional Investors'
+            }, 
+            {
+              id: 2,
+              name: 'Commerce',
+              description: 'Accept crypto from anyone'
+            }, 
+            {
+              id: 3,
+              name: 'Exchange',
+              description: 'Direct access to our exchange'
+            }, 
+            {
+              id: 4,
+              name: 'Prime',
+              description: 'The prime brokerage platform'
+            }, 
+            {
+              id: 5,
+              name: 'Asset Hub',
+              description: 'List your asset on Coinbase'
+            }, 
+            {
+              id: 6,
+              name: 'Compliance',
+              description: 'Power your crypto compliance'
+            }
+          ],
+
+          developer: [
+            {
+              id: 1,
+              name: 'Cloud',
+              description: 'Suite of APIs and node infrastructure'
+            }, 
+            {
+              id: 2,
+              name: 'Wallet SDK',
+              description: 'Link dapps to coinbase wallet'
+            }, 
+            {
+              id: 3,
+              name: 'Coinbase Pay SDK',
+              description: 'Easy, secure fia- to-crypto solution'
+            }, 
+            {
+              id: 4,
+              name: 'Sign in with Coinbase',
+              description: 'Offer Coinbase users easy login to dapps'
+            }, 
+            {
+              id: 5,
+              name: 'Commerce',
+              description: 'Accept crypto payments from customers'
+            }, 
+            {
+              id: 6,
+              name: 'Exchange & Pro',
+              description: 'Power automated trading'
+            },
+            {
+              id: 7,
+              name: 'Query & Transact',
+              description: 'Read and write blockchains data'
+            }
+          ],
+        },
+
+        companyLinks: [ 
+          {
+            name: 'About'
+          },
+          {
+            name: 'Careers'
+          },
+          {
+            name: 'Affiliates'
+          },
+          {
+            name: 'Support'
+          },
+          {
+            name: 'Blog'
+          }
+        ],
+        showNavMenu: false
+      }"
+      class="sticky lg:static top-0 lg:top-[initial] z-10 shadow-sm lg:shadow-none w-full text-header-font-color bg-white"
+    >
+      <!-- TOP-BAR -->
+      <div class="relative border-b border-b-[#eceff1]">
+        <div class="mx-auto max-w-[1180px] px-5">
+          <div class="flex justify-between items-center">
+            <!-- LOGO -->
+            <a href="/index.html">
+              <img
+                class="relative max-h-5"
+                src="./assets/logo.svg"
+                width="112"
+                height="20"
+                alt="logo"
+              />
+            </a>
+
+            <!-- NAV-MENU - 1050PX AND ABOVE -->
+            <nav
+              x-data="{
+              showLearnHiddenContent: false,
+              showIndividualsHiddenContent: false,
+              showBusinessesHiddenContent: false,
+              showDevelopersHiddenContent: false,
+              showCompanyHiddenContent: false,
+              individualProductItemHoveredId: null,
+              businessProductItemHoveredId: null,
+              developerProductItemHoveredId: null
+            }"
+              class="hidden lg:flex self-stretch"
+            >
+              <!-- EXPLORE -->
+              <a class="h-full" href="#">
+                <div class="mx-[18px] h-full">
+                  <div
+                    class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                  >
+                    <span class="inline-block text-sm font-medium leading-4">
+                      Explore
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- LEARN -->
+              <div
+                x-on:mouseover="showLearnHiddenContent = true"
+                x-on:mouseout="showLearnHiddenContent = false"
+              >
+                <a class="h-full" href="#">
+                  <div class="mx-[18px] h-full">
+                    <div
+                      x-bind:class="showLearnHiddenContent && 'border-b-primary-color'"
+                      class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                    >
+                      <span class="inline-block text-sm font-medium leading-4">
+                        Learn
+                      </span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- LEARN HIDDEN CONTENT-->
+                <div
+                  x-bind:class="showLearnHiddenContent ? 'visible opacity-100' : 'invisible opacity-0'"
+                  class="absolute left-0 top-full z-20 border-b border-solid border-[#eceff1] px-[45px] py-10 w-full h-auto bg-white translate-y-[1px] transition-all duration-150 ease-linear"
+                >
+                  <div class="flex justify-center mx-auto max-w-[1065px]">
+                    <div class="flex justify-center w-full">
+                      <div
+                        class="grow-0 shrink grid grid-flow-row grid-cols-[repeat(1, max-content)] justify-end align-top gap-y-[20px]"
+                      >
+                        <template x-for="article in learningArticles">
+                          <a
+                            class="flex items-center min-w-[145px] hover:text-primary-color"
+                            href="#"
+                          >
+                            <svg
+                              width="8"
+                              height="11"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7.172 5.773L2.257.823.5 2.593l3.157 3.18L.5 8.953l1.757 1.77 4.915-4.95z"
+                                fill="#050F19"
+                              ></path>
+                            </svg>
+
+                            <span
+                              x-text="article.title"
+                              class="ml-[18px] font-medium"
+                            ></span>
+                          </a>
+                        </template>
+                      </div>
+
+                      <div class="grow shrink ml-[60px] max-w-[320px]">
+                        <h4 class="mb-2 text-base font-medium leading-4">
+                          Crypto questions, answered
+                        </h4>
+
+                        <p class="mb-[22px]">
+                          Guides and explainers for your crypto questions
+                        </p>
+
+                        <a class="block" title="See all articles" href="#">
+                          <h4
+                            class="text-base font-medium text-primary-color hover:text-[#1652f0cc]"
+                          >
+                            See all articles
+                          </h4>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- INDIVIDUALS -->
+              <div
+                x-on:mouseover="showIndividualsHiddenContent = true"
+                x-on:mouseout="showIndividualsHiddenContent = false"
+                class="h-full cursor-default"
+              >
+                <div class="mx-[18px] h-full">
+                  <div
+                    x-bind:class="showIndividualsHiddenContent && 'border-b-primary-color'"
+                    class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                  >
+                    <span class="inline-block text-sm font-medium leading-4">
+                      Individuals
+                    </span>
+                  </div>
+                </div>
+
+                <!-- INDIVIDUALS HIDDEN CONTENT -->
+                <div
+                  x-ref="individualHiddenContent"
+                  x-bind:class="showIndividualsHiddenContent ? 'visible opacity-100' : 'invisible opacity-0'"
+                  class="absolute left-0 top-full z-20 shadow-sm border-b border-solid border-[#eceff1] p-[45px] w-full h-auto bg-white translate-y-[1px] transition-all duration-150 ease-linear"
+                >
+                  <div class="flex justify-center mx-auto max-w-[1065px]">
+                    <div class="flex justify-center w-full">
+                      <div
+                        class="grow-0 shrink grid grid-flow-row grid-cols-nav-bar justify-end items-start gap-y-[20px] gap-x-[34px]"
+                      >
+                        <template x-for="product in products.individual">
+                          <a
+                            @mouseover="function() {
+                              console.log('mouseover');
+                              individualProductItemHoveredId = product.id;
+                            }"
+                            @mouseout="function() {
+                              console.log('mouseout');
+                              individualProductItemHoveredId = null;
+                            }"
+                            class="flex items-center min-w-[145px]"
+                            href="#"
+                          >
+                            <div class="flex justify-center items-center">
+                              <img
+                                x-show="product.name === 'Buy and sell'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/buy-and-sell.svg"
+                                width="40"
+                                height="40"
+                                alt="buy-and-sell"
+                              />
+
+                              <img
+                                x-show="product.name === 'Earn'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/earn.svg"
+                                width="40"
+                                height="40"
+                                alt="earn"
+                                class=""
+                              />
+
+                              <img
+                                x-show="product.name === 'Private Client'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/private-client.svg"
+                                width="40"
+                                height="40"
+                                alt="private-client"
+                              />
+
+                              <img
+                                x-show="product.name === 'NFT'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/nft.svg"
+                                width="40"
+                                height="40"
+                                alt="NFT"
+                              />
+
+                              <img
+                                x-show="product.name === 'Wallet'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/wallet.svg"
+                                width="40"
+                                height="40"
+                                alt="wallet"
+                              />
+
+                              <img
+                                x-show="product.name === 'Card'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/card.svg"
+                                width="40"
+                                height="40"
+                                alt="card"
+                              />
+
+                              <img
+                                x-show="product.name === 'Borrow'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/borrow.svg"
+                                width="40"
+                                height="40"
+                                alt="borrow"
+                              />
+
+                              <img
+                                x-show="product.name === 'Derivatives'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/individuals/derivatives.svg"
+                                width="40"
+                                height="40"
+                                alt="derivatives"
+                              />
+                            </div>
+
+                            <div class="ml-[12px] max-w-[316px] text-base">
+                              <h4
+                                x-text="product.name"
+                                x-bind:class="individualProductItemHoveredId === product.id && 'text-primary-color'"
+                                class="mb-1 font-medium leading-4"
+                              ></h4>
+
+                              <p
+                                x-text="product.description"
+                                x-bind:class="individualProductItemHoveredId === product.id ? 'text-header-font-color' : 'text-[#11335399]'"
+                                class="leading-5"
+                              ></p>
+                            </div>
+                          </a>
+                        </template>
+                      </div>
+
+                      <div class="grow shrink ml-[60px] max-w-[320px]">
+                        <h4 class="mb-2 text-base font-medium leading-4">
+                          Crypto tools for everyone
+                        </h4>
+
+                        <p class="mb-[22px] leading-6">
+                          Buy sell, and spend crypto on the world's most trusted
+                          exchange
+                        </p>
+
+                        <a class="block" title="See all articles" href="#"
+                          ><h4
+                            class="text-base font-medium text-primary-color hover:text-[#1652f0cc]"
+                          >
+                            See all products
+                          </h4></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUSINESSES -->
+              <div
+                x-on:mouseover="showBusinessesHiddenContent = true"
+                x-on:mouseout="showBusinessesHiddenContent = false"
+                class="h-full cursor-default"
+              >
+                <div class="mx-[18px] h-full">
+                  <div
+                    x-bind:class="showBusinessesHiddenContent && 'border-b-primary-color'"
+                    class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                  >
+                    <span class="inline-block text-sm font-medium leading-4">
+                      Businesses
+                    </span>
+                  </div>
+                </div>
+
+                <!-- BUSINESSES HIDDEN CONTENT -->
+                <div
+                  x-bind:class="showBusinessesHiddenContent ? 'visible opacity-100' : 'invisible opacity-0'"
+                  class="absolute left-0 top-full z-20 shadow-sm border-b border-solid border-[#eceff1] p-[45px] w-full h-auto bg-white translate-y-[1px] transition-all duration-150 ease-linear"
+                >
+                  <div class="flex justify-center mx-auto max-w-[1065px]">
+                    <div class="flex justify-center w-full">
+                      <div
+                        class="grow-0 shrink grid grid-flow-row grid-cols-nav-bar justify-end items-start gap-y-[20px] gap-x-[34px]"
+                      >
+                        <template x-for="product in products.business">
+                          <a
+                            @mouseover="function() {
+                              console.log('mouseover');
+                              businessProductItemHoveredId = product.id;
+                            }"
+                            @mouseout="function() {
+                              console.log('mouseout');
+                              businessProductItemHoveredId = null;
+                            }"
+                            class="flex items-center min-w-[145px]"
+                            href="#"
+                          >
+                            <div class="flex justify-center items-center">
+                              <img
+                                x-show="product.name === 'Institutional'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/institutional.svg"
+                                width="40"
+                                height="40"
+                                alt="institutional"
+                              />
+
+                              <img
+                                x-show="product.name === 'Commerce'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/commerce.svg"
+                                width="40"
+                                height="40"
+                                alt="commerce"
+                                class=""
+                              />
+
+                              <img
+                                x-show="product.name === 'Exchange'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/exchange.svg"
+                                width="40"
+                                height="40"
+                                alt="exchange"
+                              />
+
+                              <img
+                                x-show="product.name === 'Prime'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/prime.svg"
+                                width="40"
+                                height="40"
+                                alt="prime"
+                              />
+
+                              <img
+                                x-show="product.name === 'Asset Hub'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/asset-hub.svg"
+                                width="40"
+                                height="40"
+                                alt="asset-hub"
+                              />
+
+                              <img
+                                x-show="product.name === 'Compliance'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/businesses/compliance.svg"
+                                width="40"
+                                height="40"
+                                alt="compliance"
+                              />
+                            </div>
+
+                            <div class="ml-[12px] max-w-[316px] text-base">
+                              <h4
+                                x-text="product.name"
+                                x-bind:class="businessProductItemHoveredId === product.id && 'text-primary-color'"
+                                class="mb-1 font-medium leading-4"
+                              ></h4>
+
+                              <p
+                                x-text="product.description"
+                                x-bind:class="businessProductItemHoveredId === product.id ? 'text-header-font-color' : 'text-[#11335399]'"
+                                class="leading-5"
+                              ></p>
+                            </div>
+                          </a>
+                        </template>
+                      </div>
+
+                      <div class="grow shrink ml-[60px] max-w-[320px]">
+                        <h4 class="mb-2 text-base font-medium leading-4">
+                          Built for businesses and institutions
+                        </h4>
+                        <p class="mb-[22px] leading-6">
+                          Crypto solutions for institutional investors, family
+                          offices, and businesses
+                        </p>
+                        <a class="block" title="See all articles" href="#"
+                          ><h4
+                            class="text-base font-medium text-primary-color hover:text-[#1652f0cc]"
+                          >
+                            See all products
+                          </h4></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DEVELOPERS -->
+              <div
+                x-on:mouseover="showDevelopersHiddenContent = true"
+                x-on:mouseout="showDevelopersHiddenContent = false"
+                class="h-full cursor-default"
+              >
+                <div class="mx-[18px] h-full">
+                  <div
+                    x-bind:class="showDevelopersHiddenContent && 'border-b-primary-color'"
+                    class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                  >
+                    <span class="inline-block text-sm font-medium leading-4">
+                      Developers
+                    </span>
+                  </div>
+                </div>
+
+                <!-- DEVELOPERS HIDDEN CONTENT -->
+                <div
+                  x-bind:class="showDevelopersHiddenContent ? 'visible opacity-100' : 'invisible opacity-0'"
+                  class="absolute left-0 top-full z-20 shadow-sm border-b border-solid border-[#eceff1] p-[45px] w-full h-auto bg-white translate-y-[1px] transition-all duration-150 ease-linear"
+                >
+                  <div class="flex justify-center mx-auto max-w-[1065px]">
+                    <div class="flex justify-center w-full">
+                      <div
+                        class="grow-0 shrink grid grid-flow-row grid-cols-nav-bar justify-end items-start gap-y-[20px] gap-x-[34px]"
+                      >
+                        <template x-for="product in products.developer">
+                          <a 
+                          @mouseover="function() {
+                            console.log('mouseover');
+                            developerProductItemHoveredId = product.id;
+                          }"
+                          @mouseout="function() {
+                            console.log('mouseout');
+                            developerProductItemHoveredId = null;
+                          }"
+                          class="flex items-center min-w-[145px]" href="#">
+                            <div class="flex justify-center items-center">
+                              <img
+                                x-show="product.name === 'Cloud'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/cloud.png"
+                                width="40"
+                                height="40"
+                                alt="Cloud"
+                              />
+
+                              <img
+                                x-show="product.name === 'Wallet SDK'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/wallet-sdk.png"
+                                width="40"
+                                height="40"
+                                alt="commerce"
+                                class=""
+                              />
+
+                              <img
+                                x-show="product.name === 'Coinbase Pay SDK'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/coinbase-pay-sdk.svg"
+                                width="40"
+                                height="40"
+                                alt="Coinbase-pay-sdk"
+                              />
+
+                              <img
+                                x-show="product.name === 'Sign in with Coinbase'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/sign-in.svg"
+                                width="40"
+                                height="40"
+                                alt="sign-in-coinbase"
+                              />
+
+                              <img
+                                x-show="product.name === 'Commerce'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/commerce.png"
+                                width="40"
+                                height="40"
+                                alt="commerce"
+                              />
+
+                              <img
+                                x-show="product.name === 'Exchange & Pro'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/exchange-and-pro.png"
+                                width="40"
+                                height="40"
+                                alt="exchange-and-pro"
+                              />
+
+                              <img
+                                x-show="product.name === 'Query & Transact'"
+                                x-cloak
+                                src="./assets/icons/nav-bar/developers/query-and-transact.png"
+                                width="40"
+                                height="40"
+                                alt="query-and-transact"
+                              />
+                            </div>
+
+                            <div class="ml-[12px] max-w-[316px] text-base">
+                              <h4
+                                x-text="product.name"
+                                x-bind:class="developerProductItemHoveredId === product.id && 'text-primary-color'"
+                                class="mb-1 font-medium leading-4"
+                              ></h4>
+
+                              <p
+                                x-text="product.description"
+                                x-bind:class="developerProductItemHoveredId === product.id ? 'text-header-font-color' : 'text-[#11335399]'"
+                                class="leading-5"
+                              ></p>
+                            </div>
+                          </a>
+                        </template>
+                      </div>
+
+                      <div class="grow shrink ml-[60px] max-w-[320px]">
+                        <h4 class="mb-2 text-base font-medium leading-4">
+                          Built for developers
+                        </h4>
+
+                        <p class="mb-[22px] leading-6">
+                          Tools and APIs for developers building the future of
+                          web3
+                        </p>
+
+                        <a class="block" title="See all articles" href="#"
+                          ><h4
+                            class="text-base font-medium text-primary-color hover:text-[#1652f0cc]"
+                          >
+                            See all products
+                          </h4></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COMPANY -->
+              <div
+                x-on:mouseover="showCompanyHiddenContent = true"
+                x-on:mouseout="showCompanyHiddenContent = false"
+                class="h-full cursor-default"
+              >
+                <div class="mx-[18px] h-full">
+                  <div
+                    x-bind:class="showCompanyHiddenContent && 'border-b-primary-color'"
+                    class="flex items-center border-b-4 border-b-transparent hover:border-b-primary-color h-full"
+                  >
+                    <span class="inline-block text-sm font-medium leading-4">
+                      Company
+                    </span>
+                  </div>
+                </div>
+
+                <!-- COMPANY HIDDEN CONTENT -->
+                <div
+                  x-bind:class="showCompanyHiddenContent ? 'visible opacity-100' : 'invisible opacity-0'"
+                  class="absolute left-0 top-full z-20 border-b border-solid border-[#eceff1] px-[45px] py-10 w-full h-auto bg-white translate-y-[1px] transition-all duration-150 ease-linear"
+                >
+                  <div class="flex justify-center mx-auto max-w-[1065px]">
+                    <div class="flex justify-center w-full">
+                      <div
+                        class="grow-0 shrink grid grid-flow-row grid-cols-nav-bar justify-end align-top gap-y-[20px] gap-x-[34px]"
+                      >
+                        <template x-for="link in companyLinks">
+                          <a
+                            class="flex items-center min-w-[145px] hover:text-primary-color"
+                            href="#"
+                          >
+                            <svg
+                              width="8"
+                              height="11"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7.172 5.773L2.257.823.5 2.593l3.157 3.18L.5 8.953l1.757 1.77 4.915-4.95z"
+                                fill="#050F19"
+                              ></path>
+                            </svg>
+
+                            <span
+                              x-text="link.name"
+                              class="ml-[18px] font-medium"
+                            ></span>
+                          </a>
+                        </template>
+                      </div>
+
+                      <div class="grow shrink ml-[60px] max-w-[320px]">
+                        <h4 class="mb-2 text-base font-medium leading-4">
+                          Learn all about Coinbase
+                        </h4>
+
+                        <p class="mb-[22px] leading-6">
+                          We're building an open financial system for the world.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <div class="flex items-center">
+              <div class="flex items-center py-[15px]">
+                <a
+                  class="hidden lg:block text-sm font-medium leading-4 hover:text-primary-color"
+                  href="#"
+                  >Sign In</a
+                >
+
+                <button
+                  class="border border-primary-color hover:border-transparent rounded ml-5 px-3 py-2.5 text-sm font-medium leading-[14px] text-white bg-primary-color hover:bg-[#0a46e4] transition-[background-color] duration-[250ms] ease-linear"
+                >
+                  View Open Roles
+                </button>
+              </div>
+
+              <div 
+              x-on:click="showNavMenu = !showNavMenu"
+              class="block lg:hidden ml-5 mb-2.5 mt-5 -m-2.5 p-2.5 cursor-pointer">
+                <div
+                  class="block relative w-[18px] h-[17px]"
+                >
+                  <span
+                    x-bind:class="showNavMenu ? 'bg-transparent rotate-45' : 'bg-[#050f19] rotate-0'"
+                    class="absolute left-0 top-0.5 rounded block w-full h-[2px] transition-all duration-300 ease-linear"
+                  >
+                    <span
+                      x-bind:class="showNavMenu ? 'translate-y-0' : '-translate-y-[8px]'"
+                      class="absolute left-0 top-0 rounded block w-full h-[2px] bg-[#050f19] transition-transform duration-300 ease-linear"
+                    ></span>
+                    <span
+                      x-bind:class="showNavMenu ? 'translate-y-0 -rotate-90': 'translate-y-[8px] rotate-0'"
+                      class="absolute left-0 top-0 rounded block w-full h-[2px] bg-[#050f19] transition-transform duration-300 ease-linear"
+                    ></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM BAR -->
+      <div
+        x-bind:class="showNavMenu ? 'hidden' : 'block'"
+        class="border-b border-b-[#eceff1]"
+      >
+        <div class="mx-auto max-w-[1180px] px-5 overflow-hidden">
+          <div class="flex items-center">
+            <a class="grow text-lg font-light" href="#">Careers</a>
+
+            <!-- NAV-MENU -->
+            <nav class="grow flex ml-5 lg:ml-0 px-[5px] overflow-x-auto">
+              <template x-for="navItem in navItems.bottomBar">
+                <div class="py-[18px] px-5">
+                  <a
+                    x-text="navItem.name"
+                    class="inline-block text-sm font-medium leading-[18px] hover:text-[#1652f0cc] w-[max-content]"
+                    href="#"
+                  ></a>
+                </div>
+              </template>
+            </nav>
+
+            <div class="grow"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAV-MENU - 1050PX AND BELOW -->
+      <div
+        x-data="{
+        shownPanel: '',
+        showLearnPanel: false,
+        showIndividualsPanel: false,
+        showBusinessesPanel: false,
+        showDevelopersPanel: false,
+        showCompanyPanel: false,
+      }"
+        x-bind:class="showNavMenu ? 'block' : 'hidden'"
+        class="mb-5 py-2 h-nav-menu bg-white overflow-y-auto slide-down-mobile-nav"
+      >
+        <!-- EXPLORE  -->
+        <a href="#" class="block py-5 px-6 text-base font-medium leading-4"
+          >Explore</a
+        >
+
+        <!-- LEARN -->
+        <div>
+          <div
+            @click="function() {
+              shownPanel = 'learn'
+              showLearnPanel = !showLearnPanel
+              showIndividualsPanel = false
+              showBusinessesPanel = false
+              showDevelopersPanel = false
+              showCompanyPanel = false
+          }"
+            class="flex justify-between py-5 px-6"
+          >
+            <span class="text-base font-medium leading-4">Learn</span>
+
+            <span 
+            x-bind:class="shownPanel === 'learn' && showLearnPanel ? 'rotate-180' : 'rotate-0'"
+            class="transition-transform duration-150 ease-out">
+              <svg
+                width="12"
+                height="8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.007 8L11.9 2.107 9.793 0 6.007 3.786 2.221 0 .114 2.107 6.007 8z"
+                  fill="#050F19"
+                ></path>
+              </svg>
+            </span>
+          </div>
+
+          <div
+            x-bind:class="shownPanel === 'learn' && showLearnPanel ? 'block' : 'hidden'"
+            class="py-5 px-6 bg-[#f1f3f5]"
+          >
+            <template x-for="article in learningArticles">
+              <a x-text="article.title" href="#" class="block py-[17px]"></a>
+            </template>
+          </div>
+        </div>
+
+        <!-- INDIVIDUALS -->
+        <div>
+          <div
+            @click="function() {
+              shownPanel = 'individuals'
+              showIndividualsPanel = !showIndividualsPanel
+              showLearnPanel = false
+              showBusinessesPanel = false
+              showDevelopersPanel = false
+              showCompanyPanel = false
+
+            }"
+            class="flex justify-between py-5 px-6"
+          >
+            <span class="text-base font-medium leading-4">Individuals</span>
+
+            <span 
+            x-bind:class="shownPanel === 'individuals' && showIndividualsPanel ? 'rotate-180' : 'rotate-0'"
+            class="transition-transform duration-150 ease-out">
+              <svg
+                width="12"
+                height="8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.007 8L11.9 2.107 9.793 0 6.007 3.786 2.221 0 .114 2.107 6.007 8z"
+                  fill="#050F19"
+                ></path>
+              </svg>
+            </span>
+          </div>
+
+          <div
+          x-bind:class="shownPanel === 'individuals' && showIndividualsPanel ? 'block' : 'hidden'"
+          "
+            class="py-5 px-6 bg-[#f1f3f5]"
+          >
+            <template x-for="product in products.individual">
+              <a x-text="product.name" href="#" class="block py-[17px]"></a>
+            </template>
+          </div>
+        </div>
+
+        <!-- BUSINESSES -->
+        <div>
+          <div
+            @click="function() {
+              shownPanel = 'businesses'
+              showBusinessesPanel = !showBusinessesPanel
+              showLearnPanel = false
+              showIndividualsPanel = false
+              showDevelopersPanel = false
+              showCompanyPanel = false
+            }"
+            class="flex justify-between py-5 px-6"
+          >
+            <span class="text-base font-medium leading-4">Businesses</span>
+
+            <span 
+            
+            x-bind:class="shownPanel === 'businesses' && showBusinessesPanel ? 'rotate-180' : 'rotate-0'"
+            class="transition-transform duration-150 ease-out">
+              <svg
+                width="12"
+                height="8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.007 8L11.9 2.107 9.793 0 6.007 3.786 2.221 0 .114 2.107 6.007 8z"
+                  fill="#050F19"
+                ></path>
+              </svg>
+            </span>
+          </div>
+
+          <div
+          x-bind:class="shownPanel === 'businesses' && showBusinessesPanel ? 'block' : 'hidden'"
+          "
+            class="py-5 px-6 bg-[#f1f3f5]"
+          >
+            <template x-for="product in products.business">
+              <a x-text="product.name" href="#" class="block py-[17px]"></a>
+            </template>
+          </div>
+        </div>
+
+        <!-- DEVELOPERS -->
+        <div>
+          <div
+            @click="function() {
+            shownPanel = 'developers'
+            showDevelopersPanel = !showDevelopersPanel
+            showLearnPanel = false
+            showIndividualsPanel = false
+            showBusinessesPanel = false
+            showCompanyPanel = false
+          }"
+            class="flex justify-between py-5 px-6"
+          >
+            <span class="text-base font-medium leading-4">Developers</span>
+
+            <span 
+            x-bind:class="shownPanel === 'developers' && showDevelopersPanel ? 'rotate-180' : 'rotate-0'"
+            class="transition-transform duration-150 ease-out">
+              <svg
+                width="12"
+                height="8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.007 8L11.9 2.107 9.793 0 6.007 3.786 2.221 0 .114 2.107 6.007 8z"
+                  fill="#050F19"
+                ></path>
+              </svg>
+            </span>
+          </div>
+
+          <div
+          x-bind:class="shownPanel === 'developers' && showDevelopersPanel ? 'block' : 'hidden'"
+          "
+          class="py-5 px-6 bg-[#f1f3f5]"
+          >
+            <template x-for="product in products.developer">
+              <a x-text="product.name" href="#" class="block py-[17px]"></a>
+            </template>
+          </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div>
+          <div
+          @click="function() {
+            shownPanel = 'company';
+            showCompanyPanel = !showCompanyPanel
+            showLearnPanel = false
+            showIndividualsPanel = false
+            showBusinessesPanel = false
+            showDevelopersPanel = false
+          }"
+            class="flex justify-between py-5 px-6"
+          >
+            <span class="text-base font-medium leading-4">Company</span>
+
+            <span 
+            x-bind:class="shownPanel === 'company' && showCompanyPanel ? 'rotate-180' : 'rotate-0'"
+            class="transition-transform duration-150 ease-out">
+              <svg
+                width="12"
+                height="8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.007 8L11.9 2.107 9.793 0 6.007 3.786 2.221 0 .114 2.107 6.007 8z"
+                  fill="#050F19"
+                ></path>
+              </svg>
+            </span>
+          </div>
+
+          <div 
+          x-bind:class="shownPanel === 'company' && showCompanyPanel ? 'block' : 'hidden'"
+          "
+          class="py-5 px-6 bg-[#f1f3f5]">
+            <template x-for="link in companyLinks">
+              <a x-text="link.name" href="#" class="block py-[17px]"></a>
+            </template>
+          </div>
+        </div>
+
+        <div class="py-5 px-6">
+          <a
+            href="#"
+            class="block rounded mb-2.5 p-5 text-base font-medium leading-[14px] text-center text-white bg-primary-color hover:bg-[#0a46e4] transition-[background-color] duration-[250] ease-linear"
+            >View open roles</a
+          >
+
+          <a
+            href="#"
+            class="block rounded border-2 border-solid border-primary-color p-5 text-base font-medium leading-[14px] text-center text-primary-color bg-white transition-[background-color] duration-[250] ease-linear"
+            >Sign in</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- SECTION START -->
+    <section class="py-20 text-base-font-color-1">
+      <div
+        class="flex flex-col items-center mx-auto px-6 md:py-10 w-full max-w-[1180px] font-normal text-center"
+      >
+        <h1
+          class="mb-10 text-[34px] md:text-[68px] font-normal leading-[44px] md:leading-[72px] text-start sm:text-center"
+        >
+          Lead the future of the cryptoeconomy. #LiveCrypto
+        </h1>
+
+        <p
+          class="mb-10 max-w-[820px] text-[20px] md:text-[28px] font-medium md:font-normal leading-[28px] md:leading-9 text-start sm:text-center"
+        >
+          We’re Coinbase. We’re the world’s most trusted way to join the crypto
+          revolution, serving more than 89 million accounts in more than 100
+          countries. Come work with us.
+        </p>
+
+        <a
+          class="inline-block rounded mb-20 px-6 py-4 w-full sm:w-auto font-medium text-center text-white bg-primary-color hover:bg-[#0a46e4] transition-[background-color] duration-[250ms] ease-linear"
+          href="#"
+          >View open roles
+        </a>
+
+        <img src="./assets/images/img-01.webp" alt="#" class="w-full" />
+      </div>
+    </section>
+    <!-- SECTION END -->
+
+    <!-- SECTION START -->
+    <section
+      x-data="{
+      items: [
+        {
+          id: 1,
+          title: 'Increasing economic freedom world-wide',
+          description: 'Our mission is to increase economic freedom around the world, and we couldn’t do this without hiring the best people.',
+          imagePosition: 'left'
+        },
+        {
+          id: 2,
+          title: 'Interviewing at Coinbase',
+          description: 'Want to learn more about how to work at the world’s most trusted cryptocurrency platform? Let us give you the details on how we hire.',
+          imagePosition: 'right'
+
+        },
+        {
+          id: 3,
+          title: 'Life at Coinbase',
+          description: 'We’re a remote-first group of hard-working overachievers who are deeply focused on building the future of finance and cryptoeconomy for our users across the globe. Know those people who always lead the group project? That’s us.',
+          imagePosition: 'left'
+
+        },
+        {
+          id: 4,
+          title: 'Belonging at Coinbase',
+          description: 'We all belong at Coinbase. Learn more about how we value Belonging, Inclusion and Diversity in our mission-focused environment.',
+          imagePosition: 'right'
+
+        },
+      ]
+    }"
+      class="text-base-font-color-1"
+    >
+      <div class="mx-auto w-full max-w-[1180px]">
+        <template x-for="item in items">
+          <div class="flex flex-wrap items-stretch pt-10 sm:pb-20">
+            <div
+              x-bind:class="item.imagePosition === 'left' ? 'order-last sm:order-first' : 'order-last'"
+              class="basis-full sm:basis-1/2 flex justify-center items-center"
+            >
+              <img
+                x-show="item.id === 1"
+                x-cloak
+                src="./assets/images/img-02.png"
+                alt="item"
+              />
+
+              <img
+                x-show="item.id === 2"
+                x-cloak
+                src="./assets/images/img-03.png"
+                alt="item"
+              />
+
+              <img
+                x-show="item.id === 3"
+                x-cloak
+                src="./assets/images/img-04.png"
+                alt="item"
+              />
+
+              <img
+                x-show="item.id === 4"
+                x-cloak
+                src="./assets/images/img-05.png"
+                alt="item"
+              />
+            </div>
+
+            <div
+              class="basis-full order-first sm:basis-1/2 flex justify-center items-center p-6 sm:p-10 md:p-16"
+            >
+              <div>
+                <h2
+                  x-text="item.title"
+                  class="mb-4 text-[28px] md:text-[34px] leading-9 md:leading-[44px] font-normal"
+                ></h2>
+
+                <p x-text="item.description" class="mb-6 leading-8"></p>
+
+                <a
+                  class="inline-block mb-6 text-primary-color hover:text-[#0a46e4] transition-[color] duration-[250ms] ease-linear"
+                  href="#"
+                >
+                  Learn more &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+    <!-- SECTION END -->
+
+    <!-- SECTION START -->
+    <section
+      x-data="{
+      teams: [
+        {
+          id: 1,
+          name: 'Engineering Security',
+          openings: [
+            {
+              title: 'Engineering Manager, Product Security',
+              location: 'USA',
+              type: 'remote'
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: 'HR & Recruiting',
+          openings: [
+            {
+              title: 'Director, Global Benefits',
+              location: 'USA',
+              type: 'remote'
+            }
+          ]
+        },
+        {
+          id: 3,
+          name: 'International Operations',
+          openings: [
+            {
+              title: 'Head of Controls (Marktfolge) - Germany',
+              location: 'Germany',
+              type: 'remote'
+            }
+          ]
+        },
+        {
+          id: 4,
+          name: 'Legal & Compliance',
+          openings: [
+            {
+              title: 'Senior Manager Compliance, KYC/EDD',
+              location: 'USA',
+              type: 'remote'
+            }
+          ]
+        },
+        {
+          id: 5,
+          name: 'Security & Priv',
+          openings: [
+            {
+              title: 'Lead Security Analyst - CSIRT',
+              location: 'India',
+              type: 'remote'
+            },
+            {
+              title: 'Lead Security Analyst - CSIRT',
+              location: 'Singapore',
+              type: 'remote'
+            },
+            {
+              title: 'Lead Security Analyst - CSIRT',
+              location: 'Ireland',
+              type: 'remote'
+            },
+            {
+              title: 'Lead Security Analyst - CSIRT',
+              location: 'UK',
+              type: 'remote'
+            }
+          ]
+        }
+      ],
+      shownPanelId: null,
+      showEngSecPanel: false,
+      showHrPanel: false,
+      showIntOpsPanel: false,
+      showLegalAndCompliancePanel: false,
+      showSecurityPanel: false
+    }"
+    >
+      <div class="mx-auto pt-16 px-6 pb-10 w-full max-w-[1180px]">
+        <h2
+          class="mb-12 text-[28px] font-medium leading-9 text-center text-base-font-color-1"
+        >
+          Choose your team
+        </h2>
+
+        <div class="border-t-4 border-b border-solid border-[5b616e33]">
+          <template x-for="team in teams">
+            <div class="border-b border-solid border-[5b616e33] py-6">
+              <div
+                x-on:click="function() {
+
+                  if(team.id === 1) {
+                    showEngSecPanel = !showEngSecPanel;
+                  } else if(team.id === 2) {
+                    showHrPanel = !showHrPanel;
+                  } else if(team.id === 3) {
+                    showIntOpsPanel = !showIntOpsPanel;
+                  } else if(team.id === 4) {
+                    showLegalAndCompliancePanel = !showLegalAndCompliancePanel;
+                  } else {
+                    showSecurityPanel = !showSecurityPanel;
+                  }
+                }"
+                class="flex items-center cursor-pointer"
+              >
+                <h2
+                  x-text="team.name"
+                  class="grow shrink text-lg sm:text-[20px] font-medium leading-[28px] text-primary-color"
+                ></h2>
+
+                <div class="flex items-center">
+                  <span class="mr-4">
+                    <b x-text="team.openings.length"></b>
+                    openings
+                  </span>
+
+                  <svg
+                    x-bind:class="function() {
+
+                      if(team.id === 1 && showEngSecPanel) {
+                        return 'rotate-0'
+                      } 
+
+                      if(team.id === 2 && showHrPanel) {
+                        return 'rotate-0'
+                      } 
+
+                      if(team.id === 3 && showIntOpsPanel) {
+                        return 'rotate-0'
+                      } 
+
+                      if(team.id === 4 &&showLegalAndCompliancePanel) {
+                        return 'rotate-0'
+                      } 
+
+                      if(team.id === 5 && showEngSecPanel) {
+                        return 'rotate-0'
+                      } 
+
+                      return '-rotate-90'
+                    }"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 10 6"
+                    class="fill-primary-color transition-transform duration-300 ease-linear"
+                  >
+                    <path
+                      d="M 4 4L 3.64645 4.35355L 4 4.70711L 4.35355 4.35355L 4 4ZM -0.353553 0.353553L 3.64645 4.35355L 4.35355 3.64645L 0.353553 -0.353553L -0.353553 0.353553ZM 4.35355 4.35355L 8.35355 0.353553L 7.64645 -0.353553L 3.64645 3.64645L 4.35355 4.35355Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div
+                x-bind:class="function() {
+                    if(team.id === 1 && showEngSecPanel) {
+                      return 'block'
+                    }
+
+                    if(team.id === 2 && showHrPanel) {
+                      return 'block'
+                    } 
+
+                    if(team.id === 3 && showIntOpsPanel) {
+                      return 'block'
+                    }
+
+                    if(team.id === 4 && showLegalAndCompliancePanel) {
+                      return 'block'
+                    } 
+
+                    if(team.id === 5 && showSecurityPanel) {
+                      return 'block'
+                    }
+                  
+                    return 'hidden'
+
+                }"
+                class="pt-8 pb-6 overflow-hidden"
+              >
+                <template x-for="opening in team.openings">
+                  <div
+                    x-bind:class="team.openings.length > 1 ? 'mb-6' : 'mb-0'"
+                  >
+                    <a
+                      x-text="opening.title"
+                      class="inline-block mb-2 text-base sm:text-[20px] font-medium text-primary-color hover:text-[#0a46e4] transition-[color] duration-[250ms] ease-linear"
+                      href="#"
+                    ></a>
+
+                    <div class="text-sm">
+                      <span x-text="opening.type" class="capitalize"></span>
+                      <span x-text="opening.location" class="capitalize"></span>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION END -->
+
+    <!-- SECTION START -->
+    <section class="pt-20 pb-16 bg-[#0a0b0d] text-center text-white">
+      <div class="mx-auto pt-12 px-6 w-full max-w-[1180px] text-center">
+        <h2
+          class="mb-4 text-[28px] md:text-[34px] leading-9 md:leading-[44px] font-normal"
+        >
+          We'd like to meet
+        </h2>
+
+        <p class="mb-8">
+          We’re a team of smart, creative overachievers — the kind of people who
+          see opportunity where others see roadblocks. Ready to #LiveCrypto?
+          Come join us.
+        </p>
+
+        <a
+          class="inline-block rounded mb-20 px-6 py-4 font-medium text-center text-white bg-primary-color hover:bg-[#0a46e4] transition-[background-color] duration-[250ms] ease-linear"
+          href="#"
+          >View open roles
+        </a>
+      </div>
+    </section>
+    <!-- SECTION END -->
+
+    <!-- SECTION START -->
+    <section class="text-[13px] font-normal leading-4 text-base-font-color-2">
+      <div class="mx-auto px-6 py-9 w-full max-w-[1180px]">
+        <h4 class="text-base mb-5">Commitment to Equal Opportunity</h4>
+
+        <p class="mb-5">
+          Coinbase is committed to diversity in its workforce and is proud to be
+          an Equal Opportunity Employer.&nbsp; All qualified applicants will
+          receive consideration for employment without regard to race, color,
+          religion, creed, gender, national origin, age, disability, veteran
+          status, sex, gender expression or identity, sexual orientation or any
+          other basis protected by applicable law. Coinbase will also consider
+          for employment qualified applicants with criminal histories in a
+          manner consistent with applicable federal, state and local law.&nbsp;
+          For US applicants, you may view
+          <a
+            href="https://www.dol.gov/sites/dolgov/files/ofccp/pdf/pay-transp_English_unformattedESQA508c.pdf"
+            class="text-primary-color"
+            >Pay Transparency</a
+          >,
+          <a
+            href="https://www.dol.gov/sites/dolgov/files/WHD/legacy/files/eppac.pdf"
+            class="text-primary-color"
+            >Employee Rights</a
+          >
+          and
+          <a
+            href="https://www.eeoc.gov/sites/default/files/migrated_files/employers/poster_screen_reader_optimized.pdf"
+            class="text-primary-color"
+            >Equal Employment Opportunity is the Law </a
+          >notices by clicking on their corresponding links.&nbsp; Additionally,
+          Coinbase participates in the
+          <a
+            href="https://static-assets.coinbase.com/e-verify.pdf"
+            class="text-primary-color"
+            >E-Verify program</a
+          >
+          in certain locations, as required by law.&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+
+        <p class="mb-5">
+          Coinbase is also committed to providing reasonable accommodations to
+          individuals with disabilities. If you need a reasonable accommodation
+          because of a disability for any part of the employment process, please
+          send an email to accommodations[at]coinbase.com and let us know the
+          nature of your request and your contact information.&nbsp; For quick
+          access to screen reading technology compatible with this site
+          <!-- --><a
+            href="https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn"
+            class="text-primary-color"
+            >click here to download</a
+          >
+          a free compatible screen reader
+          <a
+            href="http://www.chromevox.com/tutorial/"
+            class="text-primary-color"
+            >(free step by step tutorial can be found here)</a
+          >.
+        </p>
+
+        <h4 class="text-base mb-5">
+          Global Data Privacy Notice for Job Candidates and Applicants
+        </h4>
+
+        <p>
+          Depending on your location, the General Data Protection Regulation
+          (GDPR) and California Consumer Privacy Act (CCPA) may regulate the way
+          we manage the data of job applicants. Our full notice outlining how
+          data will be processed as part of the application procedure for
+          applicable locations is available
+          <a
+            href="https://www.coinbase.com/legal/applicant_privacy_notice"
+            class="text-primary-color"
+            >here</a
+          >.&nbsp; By submitting your application, you are agreeing to our use
+          and processing of your data as required.
+        </p>
+      </div>
+    </section>
+    <!-- SECTION END -->
+
+    <!-- FOOTER START -->
+    <footer
+      x-data="{
+      links: {
+        company: [
+           {
+            name: 'About'
+           },
+           {
+            name: 'Careers'
+           },
+           {
+            name: 'Affiliates'
+           },
+           {
+            name: 'Blog'
+           },
+           {
+            name: 'Press'
+           },
+           {
+            name: 'Investors'
+           },
+           {
+            name: 'Legal & privacy'
+           },
+           {
+            name: 'Cookie policy'
+           },
+           {
+            name: 'Legal & privacy'
+           },
+           {
+            name: 'Cookie preferences'
+           },
+           {
+            name: 'Digital Asset Disclosures'
+           }
+        ],
+
+        learn: [
+           {
+            name: 'Browse crypto prices'
+           },
+           {
+            name: 'Coinbase Bytes newsletter'
+           },
+           {
+            name: 'Crypto basics'
+           },
+           {
+            name: 'Tips & tutorials'
+           },
+           {
+            name: 'Market updates'
+           },
+           {
+            name: 'What is Bitcoin?'
+           },
+           {
+            name: 'What is crypto?'
+           },
+           {
+            name: 'What is a blockchain?'
+           },
+           {
+            name: 'How to set up a crypto wallet'
+           },
+           {
+            name: 'How to send crypto'
+           },
+           {
+            name: 'Taxes'
+           }
+        ],
+
+        support: [
+           {
+            name: 'Help center'
+           },
+           {
+            name: 'Contact us'
+           },
+           {
+            name: 'Create account'
+           },
+           {
+            name: 'ID verification'
+           },
+           {
+            name: 'Account information'
+           },
+           {
+            name: 'Payment methods'
+           },
+           {
+            name: 'Account access'
+           },
+           {
+            name: 'Supported crypto'
+           },
+           {
+            name: 'Supported countries'
+           },
+           {
+            name: 'Status'
+           }
+        ],
+
+        individuals: [
+           {
+            name: 'Buy & sell'
+           },
+           {
+            name: 'Earn free crypto'
+           },
+           {
+            name: 'Wallet'
+           },
+           {
+            name: 'NFT'
+           },
+           {
+            name: 'Card'
+           },
+           {
+            name: 'Derivatives'
+           }
+        ],
+
+        businesses: [
+           {
+            name: 'Institutional'
+           },
+           {
+            name: 'Prime'
+           },
+           {
+            name: 'Asset Hub'
+           },
+           {
+            name: 'Commerce'
+           }
+        ],
+
+        developers: [
+           {
+            name: 'Cloud'
+           },
+           {
+            name: 'Wallet SDK'
+           },
+           {
+            name: 'Coinbase Pay SDK'
+           },
+           {
+            name: 'Query & Transact'
+           },
+           {
+            name: 'Commerce'
+           },
+           {
+            name: 'Sign in with Coinbase'
+           },
+           {
+            name: 'Rosetta'
+           },
+           {
+            name: 'Participate'
+           },
+           {
+            name: 'Prime API'
+           }
+        ]
+      }
+    }"
+      class="border-t border-solid border-[#5b616e33] text-[#113355]"
+    >
+      <div class="mx-auto px-6 py-[100px] w-full max-w-[1180px]">
+        <div class="grid grid-cols-3">
+          <div class="col-span-3 md:col-span-1 mb-[30px] px-1">
+            <a class="inline-block mb-8" href="/index.html">
+              <img
+                class="relative max-h-5"
+                src="./assets/logo.svg"
+                width="112"
+                height="20"
+                alt="logo"
+              />
+            </a>
+
+            <select
+              class="block border border-solid border-[rgb(238,240,243)] rounded p-1 bg-white cursor-pointer hover:border-primary-color"
+            >
+              <option value="de">Deutsch</option>
+              <option value="en" selected="">English</option>
+              <option value="es">Español - España</option>
+              <option value="es-LA">Español - América Latina</option>
+              <option value="fr">Français - France</option>
+              <option value="ja">日本語</option>
+              <option value="it">Italiano</option>
+              <option value="pl">Polski</option>
+              <option value="pt">Português - Brasil</option>
+              <option value="pt-PT">Português - Portugal</option>
+              <option value="ru">Pусский</option>
+              <option value="th">ไทย</option>
+              <option value="tr">Türkçe</option>
+            </select>
+
+            <div class="mt-5 leading-5">
+              <div class="mb-2 text-lg opacity-70">© 2022 Coinbase</div>
+
+              <div class="flex items-center">
+                <a
+                  title="The Coinbase Blog"
+                  href="https://blog.coinbase.com/"
+                  class="text-base text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                  target="_blank"
+                  >Blog</a
+                >
+                <span class="Social__Spacer-sc-1klxvix-0 kQrTUe">•</span>
+
+                <a
+                  title="Coinbase Twitter account"
+                  href="https://twitter.com/coinbase"
+                  class="text-base text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                  target="_blank"
+                  >Twitter</a
+                >
+                <span class="Social__Spacer-sc-1klxvix-0 kQrTUe">•</span>
+
+                <a
+                  title="Coinbase Facebook page"
+                  href="https://www.facebook.com/Coinbase"
+                  class="text-base text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                  target="_blank"
+                  >Facebook</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-span-3 md:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+          >
+            <div class="px-1">
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Company</h2>
+
+                <ul>
+                  <template x-for="link in links.company">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Learn</h2>
+
+                <ul>
+                  <template x-for="link in links.learn">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-1">
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Individuals</h2>
+
+                <ul>
+                  <template x-for="link in links.individuals">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Businesses</h2>
+
+                <ul>
+                  <template x-for="link in links.businesses">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Developers</h2>
+
+                <ul>
+                  <template x-for="link in links.developers">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-1">
+              <div class="mb-[30px]">
+                <h2 class="mb-3 text-base font-medium">Company</h2>
+
+                <ul>
+                  <template x-for="link in links.company">
+                    <li class="mb-2">
+                      <a
+                        x-text="link.name"
+                        href="#"
+                        class="text-base leading-5 text-[#113355] opacity-70 hover:underline hover:text-[rgb(0,75,235)] transition-colors duration-[250] ease-linear"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+    <script src="./assets/js/build/alpine.js"></script>
+  </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TAILWINDCSS LOCAL IMPORT -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <!-- TAILWINDCSS CDN IMPORT -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- ALPINE.JS LOCAL IMPORT -->
+    <script src="./assets/js/alpine.js"></script>
+    <!-- ALPINE.JS CDN IMPORT -->
+    <!-- <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script> -->
+
+    <!-- GOOGLE FONTS IMPORT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FONTAWESOME LOCAL IMPORT -->
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/brands.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/solid.min.css"
+    />
+    <!-- FONTAWESOME CDN IMPORT -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css"
+      integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+
+    <title>Inusti</title>
+  </head>
+  <body>
+    <!-- HEADER START -->
+    <header class="relative z-40">
+      <!-- HEADER SECTION TOP -->
+      <div
+        class="border-b border-[#2a2a2a] lg:border-none py-[30px] lg:py-0 bg-[#151515]"
+      >
+        <div class="container">
+          <div class="flex items-center">
+            <div
+              class="hidden md:block mr-[30px] py-[5px] px-[15px] bg-[#2d2d2d]"
+            >
+              <template x-for="socialPlatform in $store.contacts.socialMedia">
+                <a
+                  x-bind:href="socialPlatform.link"
+                  class="inline-block mx-[10px]"
+                >
+                  <span
+                    class="inline-block p-[5px] text-[#9aa3b2] hover:text-[#ff5316] transition-colors duration-100 ease-linear"
+                  >
+                    <i
+                      x-bind:class="socialPlatform.name === 'facebook' ? 'fa-brands fa-facebook-square' : socialPlatform.name === 'twitter' ? 'fa-brands fa-twitter' : socialPlatform.name === 'pinterest' ? 'fa-brands fa-pinterest-p' : 'fa-brands fa-instagram'"
+                      class="text-[14px]"
+                    ></i>
+                  </span>
+                </a>
+              </template>
+            </div>
+
+            <div
+              class="hidden lg:block text-[12px] font-semibold text-[#9b9b9b]"
+            >
+              Welcome to factory & industry business
+            </div>
+
+            <div class="flex md:ml-auto">
+              <template
+                x-for="contact in [$store.contacts.emailAddress, $store.contacts.phoneNumber]"
+              >
+                <a
+                  x-bind:href="contact === 'contact@example.com' ? 'mailto:contact@example.com' : 'tel:866 888 0000'"
+                  class="mr-[30px] md:mx-[15px] text-[12px] font-semibold leading-[14px]"
+                >
+                  <span class="inline-block text-[13px] text-primary-color">
+                    <i
+                      x-bind:class="contact === 'contact@example.com' ? 'fa-solid fa-envelope' : 'fa-solid fa-phone'"
+                    ></i>
+                  </span>
+
+                  <span
+                    x-text="contact"
+                    class="inline-block ml-[5px] text-[#9a9a9a]"
+                  ></span>
+                </a>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADER SECTION BOTTOM -->
+      <div
+        class="shadow-header-bottom-section py-5 bg-[#151515] transition-all duration-[50ms]"
+      >
+        <div class="container">
+          <div class="flex justify-between items-center">
+            <!-- LOGO -->
+            <a
+              href="/index.html"
+              class="pb-[8px] max-w-[135px] lg:max-w-[150px] min-h-[20px]"
+            >
+              <img x-bind:src="$store.logos.logoLight" alt="logo" />
+            </a>
+
+            <!-- NAV-MENU - UPTO LG SCREENS(991PX)-->
+            <nav class="nav-menu upto-lg-screens">
+              <template x-for="navItem in $store.navMenu">
+                <div
+                  x-bind:class="function() {
+                    if(navItem.subMenu) {
+                        if(navItem.route === '/dist/index.html') {
+                            return 'nav-item with-sub-menu current-page';
+                        } else {
+                            return 'nav-item with-sub-menu';
+                        }
+                    } {
+                        if(navItem.route === '/dist/index.html') {
+                            return 'nav-item current-page';
+                        } else {
+                            return 'nav-item';
+                        }
+                    }
+                  }"
+                >
+                  <a x-bind:href="navItem.route">
+                    <span x-text="navItem.name" class="inline-block"></span>
+
+                    <span x-show="navItem.subMenu" class="chevron">
+                      <i class="fa-solid fa-angle-down"></i>
+                    </span>
+
+                    <span x-show="navItem.subMenu" class="underline"></span>
+                  </a>
+                </div>
+              </template>
+            </nav>
+
+            <!-- NAV-MENU - LG SCREENS AND ABOVE(992PX)-->
+            <nav
+              x-bind:class="$store.openNavMenu.open && 'open'"
+              class="nav-menu lg-screens-and-above"
+            >
+              <template x-for="navItem in $store.navMenu">
+                <div
+                  x-bind:class="function() {
+                    if(navItem.subMenu) {
+                        if(navItem.route === '/dist/index.html') {
+                            return 'nav-item with-sub-menu current-page';
+                        } else {
+                            return 'nav-item with-sub-menu';
+                        }
+                    } {
+                        if(navItem.route === '/dist/index.html') {
+                            return 'nav-item current-page';
+                        } else {
+                            return 'nav-item';
+                        }
+                    }
+                  }"
+                >
+                  <a x-bind:href="navItem.route">
+                    <span x-text="navItem.name" class="inline-block"></span>
+                  </a>
+
+                  <button
+                    x-show="navItem.subMenu"
+                    @click="function() {
+                        $store.toggleNavItemSubMenu.setClickedNavItemName(navItem.name);
+
+                        $store.toggleNavItemSubMenu.setToggleStatus();
+                    }"
+                    x-bind:class="function() {
+                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+                            return 'open';
+                        } 
+                        
+                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                            return 'open';
+                        } 
+                        
+                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                            return 'open';
+                        } 
+                        
+                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                            return 'open';
+                        }
+                        
+                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                            return 'open';
+                        } 
+                        
+                        return 'close';
+                        
+
+                    }"
+                    class="toggle-sub-menu-btn"
+                  >
+                    <span class="icon plus-icon">
+                      <i class="fa-solid fa-plus"></i>
+                    </span>
+
+                    <span class="icon minus-icon">
+                      <i class="fa-solid fa-minus"></i>
+                    </span>
+                  </button>
+                </div>
+              </template>
+
+              <!-- CLOSE NAV-MENU BTN -->
+              <button class="close-btn">
+                <span>
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </button>
+            </nav>
+
+            <!-- GET FREE QUOTE LINK -->
+            <a href="#" class="hidden lg:block btn btn-sm">
+              Get a free quote
+            </a>
+
+            <!-- OPEN(TOGGLE) NAV-MENU BTN -->
+            <button
+              @click="$store.openNavMenu.toggle()"
+              class="flex items-center lg:hidden text-white"
+            >
+              <i class="fa-solid fa-bars text-[28px]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- PAGE OVERLAY WHEN NAV-MENU OPEN -->
+    <div
+      x-show="$store.openNavMenu.open"
+      class="fixed top-0 left-0 z-30 w-full h-full bg-[rgba(0,0,0,.6)]"
+    ></div>
+  </body>
+</html>

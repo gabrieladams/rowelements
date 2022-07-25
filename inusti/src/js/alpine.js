@@ -10,7 +10,7 @@ Alpine.store("logos", {
 Alpine.store("navMenu", [
   {
     name: "Home",
-    route: "/dist/index.html",
+    route: "#",
     subMenu: [
       {
         name: "Home 1",

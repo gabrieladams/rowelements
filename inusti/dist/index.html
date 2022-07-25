@@ -47,6 +47,8 @@
       referrerpolicy="no-referrer"
     /> -->
 
+    <!-- <script src="./assets/js/main.js"></script> -->
+
     <title>Inusti</title>
   </head>
   <body>
@@ -117,7 +119,7 @@
           <div class="flex justify-between items-center">
             <!-- LOGO -->
             <a
-              href="/index.html"
+              href="#"
               class="pb-[8px] max-w-[135px] lg:max-w-[150px] min-h-[20px]"
             >
               <img x-bind:src="$store.logos.logoLight" alt="logo" />
@@ -129,17 +131,13 @@
                 <div
                   x-bind:class="function() {
                     if(navItem.subMenu) {
-                        if(navItem.route === '/dist/index.html') {
+                        if(navItem.name === 'Home') {
                             return 'nav-item with-sub-menu current-page';
                         } else {
                             return 'nav-item with-sub-menu';
                         }
-                    } {
-                        if(navItem.route === '/dist/index.html') {
-                            return 'nav-item current-page';
-                        } else {
-                            return 'nav-item';
-                        }
+                    } else {
+                        return 'nav-item';
                     }
                   }"
                 >

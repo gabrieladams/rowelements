@@ -60,118 +60,189 @@
     @apply py-[30px] px-[50px] text-[14px];
   }
 
-  /* NAV-MENU - UPTO LG SCREENS(991px) */
-  .nav-menu.upto-lg-screens {
+  /* NAV-MENU - LG SCREENS AND ABOVE(992px) */
+  .nav-menu.lg-screens-and-above {
     @apply hidden lg:block;
   }
 
-  .nav-menu.upto-lg-screens .nav-item {
-    @apply inline-block py-[22px] px-5 leading-normal;
+  .nav-menu.lg-screens-and-above .nav-item.main-menu-item {
+    @apply relative inline-block py-[22px] px-5 leading-normal;
   }
 
-  .nav-menu.upto-lg-screens .nav-item a,
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a {
+  .nav-menu.lg-screens-and-above .nav-item.main-menu-item a,
+  .nav-menu.lg-screens-and-above .nav-item.main-menu-item.with-sub-menu a {
     @apply relative inline-block font-medium text-nav-item-font-color;
   }
 
-  .nav-menu.upto-lg-screens .nav-item.current-page a {
+  .nav-menu.lg-screens-and-above .nav-item.main-menu-item a:hover,
+  .nav-menu.lg-screens-and-above
+    .nav-item.main-menu-item
+    .with-sub-menu:hover
+    a,
+  .nav-menu.lg-screens-and-above .nav-item.main-menu-item.current-page a {
     @apply text-white;
   }
 
-  .nav-menu.upto-lg-screens .nav-item a:hover {
-    @apply text-white;
-  }
-
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu:hover a {
-    @apply text-white;
-  }
-
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a .underline {
+  .nav-menu.lg-screens-and-above
+    .nav-item.main-menu-item.with-sub-menu
+    a
+    .underline {
     @apply absolute bottom-[-2px] left-0 inline-block w-0 h-[2px] opacity-0 bg-primary-color transition-all duration-[350ms];
   }
 
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu.current-page a .underline,
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu:hover a .underline {
+  .nav-menu.lg-screens-and-above
+    .nav-item.main-menu-item.with-sub-menu.current-page
+    a
+    .underline,
+  .nav-menu.lg-screens-and-above
+    .nav-item.main-menu-item.with-sub-menu:hover
+    a
+    .underline {
     @apply w-full opacity-100;
   }
 
-  .nav-menu.upto-lg-screens .nav-item.with-sub-menu a .chevron {
+  .nav-menu.lg-screens-and-above
+    .nav-item.main-menu-item.with-sub-menu
+    a
+    .chevron {
     @apply relative top-[1px] inline-block ml-[3px] w-2.5 h-2 text-[14px];
   }
 
-  /* NAV-MENU - LG SCREENS AND ABOVE(992px) */
-  .nav-menu.lg-screens-and-above {
-    @apply fixed top-0 bottom-0 left-[-300px] z-50 shadow-upto-lg-screens-nav-menu p-5 w-[300px] max-w-[85%] h-full invisible opacity-0 bg-white transition-all duration-[250ms] ease-linear;
+  .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .sub-menu.level-one {
+    @apply absolute top-full z-50 shadow-nav-item-sub-menu -mt-[1px] py-[15px] px-[25px] min-w-[250px] invisible bg-white opacity-0 transition-all duration-[350ms];
   }
 
-  .nav-menu.lg-screens-and-above.open {
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu:hover
+    .sub-menu.level-one {
+    @apply visible opacity-100;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .sub-menu.level-one
+    > .nav-item {
+    @apply border-b border-[#e4e4e4] py-[6px];
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .sub-menu.level-one
+    > .nav-item:last-child {
+    @apply border-none;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .sub-menu.level-one
+    .nav-item
+    a {
+    @apply block p-[10px] text-[15px] text-base-font-color leading-[21px] transition-colors duration-100 ease-linear;
+  }
+
+  .nav-menu.lg-screens-and-above
+    .nav-item.with-sub-menu
+    .sub-menu.level-one
+    .nav-item
+    a:hover {
+    @apply text-primary-color;
+  }
+
+  /* NAV-MENU - UPTO LG SCREENS(991px) */
+
+  .nav-menu.upto-lg-screens {
+    @apply fixed top-0 bottom-0 left-[-300px] z-50 block lg:hidden shadow-upto-lg-screens-nav-menu p-5 w-[300px] max-w-[85%] invisible bg-white opacity-0 transition-all duration-[250ms] ease-linear;
+  }
+
+  .nav-menu.upto-lg-screens.open {
     @apply left-0 visible opacity-100;
   }
 
-  .nav-menu.lg-screens-and-above .nav-item {
+  .nav-menu.upto-lg-screens .nav-item.main-menu-item {
     @apply relative border-b border-[rgba(0,0,0,.1)];
   }
 
-  .nav-menu.lg-screens-and-above .nav-item a {
-    @apply block px-2 py-3 text-[16px] font-medium text-header-font-color transition-colors duration-100 ease-linear;
+  .nav-menu.upto-lg-screens .nav-item a {
+    @apply block transition-colors duration-100 ease-linear;
   }
 
-  .nav-menu.lg-screens-and-above .nav-item a:hover,
-  .nav-menu.lg-screens-and-above .nav-item.current-page a {
+  .nav-menu.upto-lg-screens .nav-item.main-menu-item a {
+    @apply py-3 px-2 text-[16px] font-medium text-header-font-color;
+  }
+
+  .nav-menu.upto-lg-screens
+    .nav-item.with-sub-menu.close-sub-menu
+    .sub-menu.level-one {
+    @apply hidden;
+  }
+
+  .nav-menu.upto-lg-screens
+    .nav-item.with-sub-menu.open-sub-menu
+    .sub-menu.level-two {
+    @apply block;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu .toggle-sub-menu-btn {
+    @apply absolute top-3 right-0 w-[30px] h-[30px] text-[#85827d] transition-all duration-100 ease-linear;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu .sub-menu.level-one {
+    @apply pb-[15px] pl-[15px] leading-[21px];
+  }
+
+  .nav-menu.upto-lg-screens
+    .nav-item.with-sub-menu
+    .sub-menu.level-one
+    .nav-item
+    a {
+    @apply py-[15px] px-[5px] text-[15px] font-normal text-base-font-color;
+  }
+
+  .nav-menu.upto-lg-screens .nav-item.main-menu-item a:hover,
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu .sub-menu .nav-item a:hover,
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu .toggle-sub-menu-btn:hover,
+  .nav-menu.upto-lg-screens .nav-item.main-menu-item.current-page a,
+  .nav-menu.upto-lg-screens
+    .nav-item.with-sub-menu
+    .sub-menu
+    .nav-item.current-page
+    a {
     @apply text-primary-color;
   }
 
-  .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .toggle-sub-menu-btn {
-    @apply absolute top-3 right-0 w-[30px] h-[30px] text-[#85827d];
-  }
-
-  .nav-menu.lg-screens-and-above .nav-item a,
-  .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .toggle-sub-menu-btn {
-    @apply transition-colors duration-100 ease-linear;
-  }
-
-  .nav-menu.lg-screens-and-above
-    .nav-item.with-sub-menu
-    .toggle-sub-menu-btn:hover {
-    @apply text-primary-color;
-  }
-
-  .nav-menu.lg-screens-and-above
-    .nav-item.with-sub-menu
-    .toggle-sub-menu-btn
-    .icon {
+  .nav-menu.upto-lg-screens .nav-item.with-sub-menu .toggle-sub-menu-btn .icon {
     @apply absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 transition-all duration-100 ease-linear;
   }
 
-  .nav-menu.lg-screens-and-above
+  .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
-    .toggle-sub-menu-btn.close
+    .toggle-sub-menu-btn.show-plus-icon
     .plus-icon {
     @apply visible opacity-100;
   }
 
-  .nav-menu.lg-screens-and-above
+  .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
-    .toggle-sub-menu-btn.open
+    .toggle-sub-menu-btn.show-minus-icon
     .plus-icon {
     @apply invisible opacity-0;
   }
 
-  .nav-menu.lg-screens-and-above
+  .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
-    .toggle-sub-menu-btn.close
+    .toggle-sub-menu-btn.show-plus-icon
     .minus-icon {
     @apply invisible opacity-0;
   }
 
-  .nav-menu.lg-screens-and-above
+  .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
-    .toggle-sub-menu-btn.open
+    .toggle-sub-menu-btn.show-minus-icon
     .minus-icon {
     @apply visible opacity-100;
   }
 
-  nav-menu.lg-screens-and-above .close-btn {
+  nav-menu.upto-lg-screens .close-btn {
     @apply absolute top-[100px] right-0 z-50 block border border-[#e4e4e4] shadow-close-nav-menu-btn bg-white;
   }
 

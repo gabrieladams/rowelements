@@ -26,6 +26,7 @@ module.exports = {
 
       boxShadow: {
         "header-bottom-section": "0px 1px 0px 0px rgb(255 255 255 / 10%)",
+        "nav-item-sub-menu": "0 0 20px 0 rgb(62 28 131 / 10%)",
         "upto-lg-screens-nav-menu": "0 0 5px rgb(0 0 0 / 30%)",
         "close-nav-menu-btn": "2px 3px 3px rgb(0 0 0 / 10%)",
         btn: "0px 5px 15px rgb(0 0 0 / 20%)",

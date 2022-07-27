@@ -18,12 +18,12 @@
     ></script> -->
 
     <!-- GOOGLE FONTS IMPORT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
-    />
+    /> -->
 
     <!-- FONTAWESOME LOCAL IMPORT -->
     <link
@@ -46,8 +46,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     /> -->
-
-    <!-- <script src="./assets/js/main.js"></script> -->
 
     <title>Inusti</title>
   </head>
@@ -125,19 +123,20 @@
               <img x-bind:src="$store.logos.logoLight" alt="logo" />
             </a>
 
-            <!-- NAV-MENU - UPTO LG SCREENS(991PX)-->
-            <nav class="nav-menu upto-lg-screens">
+            <!-- NAV-MENU - LG SCREENS AND ABOVE(992PX)-->
+            <nav class="nav-menu lg-screens-and-above">
               <template x-for="navItem in $store.navMenu">
+                <!-- NAV-ITEM -->
                 <div
                   x-bind:class="function() {
                     if(navItem.subMenu) {
                         if(navItem.name === 'Home') {
-                            return 'nav-item with-sub-menu current-page';
+                            return 'nav-item main-menu-item with-sub-menu current-page';
                         } else {
-                            return 'nav-item with-sub-menu';
+                            return 'nav-item main-menu-item with-sub-menu';
                         }
                     } else {
-                        return 'nav-item';
+                        return 'nav-item main-menu-item';
                     }
                   }"
                 >
@@ -150,69 +149,162 @@
 
                     <span x-show="navItem.subMenu" class="underline"></span>
                   </a>
+
+                  <!-- LEVEL ONE SUB-MENU -->
+                  <div
+                    x-show="navItem.subMenu"
+                    x-bind:class="navItem.name === 'Pages' && 'left-1/2 flex pt-[25px] pb-[20px] !w-[680px] -translate-x-1/2'"
+                    class="sub-menu level-one"
+                  >
+                    <template x-for="navItem in navItem.subMenu">
+                      <div
+                        x-bind:class="(navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III') && 'grow border-none py-[6px] px-[15px] '"
+                        class="nav-item"
+                      >
+                        <a
+                          x-bind:href="navItem.route"
+                          x-bind:class="(navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III') && 'block border-b border-[#e4e4e4] mb-[5px] pb-2.5 font-medium !text-header-font-color'"
+                        >
+                          <span
+                            x-text="navItem.name"
+                            class="inline-block"
+                          ></span>
+                        </a>
+
+                        <!-- LEVEL TWO SUB-MENU -->
+                        <div
+                          x-show="navItem.subMenu"
+                          class="sub-menu level-two"
+                        >
+                          <template x-for="navItem in navItem.subMenu">
+                            <div>
+                              <a
+                                x-bind:href="navItem.route"
+                                x-text="navItem.name"
+                                class="!py-2 text-[15px] font-normal text-header-font-color"
+                              ></a>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
                 </div>
               </template>
             </nav>
 
-            <!-- NAV-MENU - LG SCREENS AND ABOVE(992PX)-->
+            <!-- NAV-MENU - UPTO LG SCREENS(991PX)-->
             <nav
               x-bind:class="$store.openNavMenu.open && 'open'"
-              class="nav-menu lg-screens-and-above"
+              class="nav-menu upto-lg-screens"
             >
               <template x-for="navItem in $store.navMenu">
                 <div
                   x-bind:class="function() {
-                    if(navItem.subMenu) {
-                        if(navItem.route === '/dist/index.html') {
-                            return 'nav-item with-sub-menu current-page';
-                        } else {
-                            return 'nav-item with-sub-menu';
+                  if(navItem.subMenu) {
+                    if(navItem.name === 'Home') {
+
+                      if($store.toggleNavItemSubMenu.clickedNavItemName === 'Home' && $store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+                        return 'with-sub-menu open-sub-menu current-page';
+
+                      } else {
+                        return 'with-sub-menu close-sub-menu current-page';
+                      } 
+                    } else {
+                      if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
+                        if($store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                          return 'with-sub-menu open-sub-menu';
                         }
-                    } {
-                        if(navItem.route === '/dist/index.html') {
-                            return 'nav-item current-page';
-                        } else {
-                            return 'nav-item';
+
+                        if($store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                          return 'with-sub-menu open-sub-menu';
                         }
+
+                        if($store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                          return 'with-sub-menu open-sub-menu';
+                        }
+
+                        if($store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                          return 'with-sub-menu open-sub-menu';
+                        }
+
+                        return 'with-sub-menu close-sub-menu';
+                        
+                      } else {
+                        return 'with-sub-menu close-sub-menu';
+                      }
                     }
-                  }"
+
+                  } 
+                }"
+                  class="nav-item main-menu-item"
                 >
                   <a x-bind:href="navItem.route">
                     <span x-text="navItem.name" class="inline-block"></span>
                   </a>
 
+                  <div x-show="navItem.subMenu" class="sub-menu level-one">
+                    <template x-for="navItem in navItem.subMenu">
+                      <div class="nav-item">
+                        <a
+                          x-bind:href="navItem.route"
+                          x-bind:class="navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III' && 'text-header-font-color'"
+                        >
+                          <span
+                            x-text="navItem.name"
+                            class="inline-block"
+                          ></span>
+                        </a>
+
+                        <div
+                          x-show="navItem.subMenu"
+                          class="sub-menu level-two pl-[15px]"
+                        >
+                          <template x-for="navItem in navItem.subMenu">
+                            <div>
+                              <a
+                                x-bind:href="navItem.route"
+                                x-text="navItem.name"
+                                class="!py-2 text-[15px] font-normal text-header-font-color"
+                              ></a>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+
                   <button
                     x-show="navItem.subMenu"
                     @click="function() {
                         $store.toggleNavItemSubMenu.setClickedNavItemName(navItem.name);
-
                         $store.toggleNavItemSubMenu.setToggleStatus();
                     }"
                     x-bind:class="function() {
-                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
-                            return 'open';
-                        } 
-                        
-                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
-                            return 'open';
-                        } 
-                        
-                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
-                            return 'open';
-                        } 
-                        
-                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
-                            return 'open';
+                      if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
+                        if($store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+                          return 'show-minus-icon';
                         }
-                        
-                        if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name && $store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
-                            return 'open';
-                        } 
-                        
-                        return 'close';
-                        
-
-                    }"
+  
+                        if($store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                          return 'show-minus-icon';
+                        }
+  
+                        if($store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                          return 'show-minus-icon';
+                        }
+  
+                        if($store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                          return 'show-minus-icon';
+                        }
+  
+                        if($store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                          return 'show-minus-icon';
+                        }
+                      } 
+                      
+                      return 'show-plus-icon';
+                  }"
                     class="toggle-sub-menu-btn"
                   >
                     <span class="icon plus-icon">

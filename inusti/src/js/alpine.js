@@ -79,6 +79,7 @@ Alpine.store("navMenu", [
     subMenu: [
       {
         name: "Pages I",
+        route: "#",
         subMenu: [
           {
             name: "About",
@@ -101,6 +102,7 @@ Alpine.store("navMenu", [
 
       {
         name: "Pages II",
+        route: "#",
         subMenu: [
           {
             name: "Events List",
@@ -123,6 +125,7 @@ Alpine.store("navMenu", [
 
       {
         name: "Pages III",
+        route: "#",
         subMenu: [
           {
             name: "Shop",
@@ -207,7 +210,6 @@ Alpine.store("toggleNavItemSubMenu", {
     }
 
     if (this.clickedNavItemName === "Projects") {
-      console.log("toggle projects");
       this.toggleStatus.openProjectsSubMenu =
         !this.toggleStatus.openProjectsSubMenu;
       this.toggleStatus.openHomeSubMenu = false;

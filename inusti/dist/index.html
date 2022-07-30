@@ -51,7 +51,7 @@
   </head>
   <body>
     <!-- HEADER START -->
-    <header class="relative z-40">
+    <header class="relative lg:static z-40 lg:z-[initial]">
       <!-- HEADER SECTION TOP -->
       <div
         class="border-b border-[#2a2a2a] lg:border-none py-[30px] lg:py-0 bg-[#151515]"
@@ -111,7 +111,7 @@
 
       <!-- HEADER SECTION BOTTOM -->
       <div
-        class="shadow-header-bottom-section py-5 bg-[#151515] transition-all duration-[50ms]"
+        class="static lg:absolute top-auto lg:top-[54px] left-auto lg:left-0 z-50 shadow-header-bottom-section py-5 w-full h-auto bg-[#151515] lg:bg-transparent transition-all duration-[50ms] ease-linear"
       >
         <div class="container">
           <div class="flex justify-between items-center">
@@ -327,7 +327,7 @@
             </nav>
 
             <!-- GET FREE QUOTE LINK -->
-            <a href="#" class="hidden lg:block btn btn-sm">
+            <a href="#" class="hidden lg:block btn btn-sm hover:bg-[#da6900]">
               Get a free quote
             </a>
 
@@ -343,6 +343,147 @@
       </div>
     </header>
     <!-- HEADER END -->
+
+    <!-- /****************************
+    HERO SLIDESHOW / SECTION ONE START
+    ***************************/ -->
+    <section
+      x-init="$store.slideShow.showSlides($store.slideShow.slideIndex)"
+      class="relative h-[415px] sm:h-[450px] md:h-[675px] lg:h-[750px] xl:h-[939px] mb-80"
+    >
+      <!-- HERO SLIDE ONE -->
+      <div
+        x-bind:class="$store.slideShow.slideIndex === 1 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
+        style="
+          background-image: url('./assets/images/slider/slider-one-img.jpg');
+        "
+        class="hero-slide absolute top-0 left-0 w-full h-full bg-img"
+      >
+        <div class="relative z-40 flex justify-center items-center h-full">
+          <div
+            class="basis-full sm:basis-10/12 md:basis-9/12 xl:basis-7/12 max-w-[840px] -mt-[20px] lg:-mt-0 xl:-mt-[65px] px-[15px] text-center text-white overflow-hidden"
+          >
+            <!-- HERO SLIDE SUB-TITLE -->
+            <span
+              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-sub-title-shrink-in'"
+              class="inline-block mb-[10px] lg:mb-[15px] xl:mb-[30px] w-full lg:w-[380px] lg:max-w-[380px] text-[15px] md:text-[18px] lg:text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
+              >Welcome to Factory & Industry Business</span
+            >
+
+            <!-- HERO SLIDE TITLE -->
+            <h1
+              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-title-shrink-in'"
+              class="mb-[35px] md:mb-[50px] lg:mb-[50px] text-[40px] sm:text-[45px] md:text-[58px] lg:text-[72px] xl:text-[86px] font-black leading-[44px] md:leading-[72px] lg:leading-[84px] xl:leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
+            >
+              Build Everything With Passion
+            </h1>
+
+            <!-- HERO SLIDE LINK -->
+            <a
+              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-link-fade-in'"
+              href="#"
+              class="btn btn-lg !p-4 md:!p-6 lg:py-[30px] lg:px-[50px] text-[14px] tracking-normal lg:tracking-[1.4px] opacity-0"
+            >
+              Get to know us
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO SLIDE OVERLAY -->
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-black opacity-50"
+        ></div>
+      </div>
+
+      <!-- HERO SLIDE TWO -->
+      <div
+        x-bind:class="$store.slideShow.slideIndex === 2 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
+        style="
+          background-image: url('./assets/images/slider/slider-two-img.jpg');
+        "
+        class="hero-slide relative hidden lg:block h-full bg-img"
+      >
+        <div class="relative z-40 flex justify-center items-center h-full">
+          <div
+            class="basis-7/12 max-w-[840px] -mt-[65px] text-center text-white overflow-hidden"
+          >
+            <!-- HERO SLIDE SUB-TITLE -->
+            <span
+              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-sub-title-shrink-in'"
+              class="inline-block mb-[30px] w-[380px] max-w-[380px] text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
+              >Welcome to Factory & Industry Business</span
+            >
+
+            <!-- HERO SLIDE TITLE -->
+            <h1
+              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-title-shrink-in'"
+              class="mb-[50px] text-[86px] font-black leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
+            >
+              Making the Complex Simple
+            </h1>
+
+            <!-- HERO SLIDE LINK -->
+            <a
+              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-link-fade-in'"
+              href="#"
+              class="btn btn-lg opacity-0"
+            >
+              Get A free quote
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO SLIDE OVERLAY -->
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-black opacity-50"
+        ></div>
+      </div>
+
+      <!-- HERO SLIDESHOW CONTROLS -->
+      <!-- PREV -->
+      <div
+        @click="$store.slideShow.plusSlides(-1)"
+        class="absolute top-[300px] xl:top-[350px] left-[50px] xl:left-[100px] z-40 rounded-full border border-[#bdbdbd] hidden lg:block w-[70px] h-[70px] cursor-pointer"
+      >
+        <span
+          class="absolute top-1/2 left-1/2 inline-block -translate-x-1/2 -translate-y-1/2 text-[#bdbdbd]"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+        </span>
+      </div>
+
+      <!-- NEXT -->
+      <div
+        @click="$store.slideShow.plusSlides(1)"
+        class="absolute top-[300px] xl:top-[350px] right-[50px] xl:right-[100px] z-40 rounded-full border border-[#bdbdbd] hidden lg:block w-[70px] h-[70px] cursor-pointer"
+      >
+        <span
+          class="absolute top-1/2 left-1/2 inline-block -translate-x-1/2 -translate-y-1/2 text-[#bdbdbd]"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </div>
+
+      <!--HERO SLIDESHOW DOT INDICATORS -->
+      <div
+        class="absolute bottom-[75px] left-1/2 -translate-x-1/2 z-40 hidden lg:block"
+      >
+        <span
+          @click="$store.slideShow.currentSlide(1)"
+          x-bind:class="$store.slideShow.slideIndex === 1 ? 'bg-white' : 'bg-[#bdbdbd]'"
+          class="hero-slideshow-dot-indicator inline-block rounded-full w-[10px] h-[10px] cursor-pointer"
+        ></span>
+
+        <span
+          @click="$store.slideShow.currentSlide(2)"
+          x-bind:class="$store.slideShow.slideIndex === 2 ? 'bg-white' : 'bg-[#bdbdbd]'"
+          class="hero-slideshow-dot-indicator inline-block rounded-full ml-[5px] w-[10px] h-[10px] cursor-pointer"
+        ></span>
+      </div>
+    </section>
+    <!-- /****************************
+    SLIDESHOW / SECTION ONE END
+    ***************************/ -->
 
     <!-- PAGE OVERLAY WHEN NAV-MENU OPEN -->
     <div

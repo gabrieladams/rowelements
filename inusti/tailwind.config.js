@@ -4,12 +4,12 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   content: ["./dist/*.html"],
   theme: {
-    screens: {
-      sm: "540px",
-      md: "768px",
-      lg: "992px",
-      xl: "1200px",
-    },
+    // screens: {
+    //   sm: "540px",
+    //   md: "768px",
+    //   lg: "992px",
+    //   xl: "1200px",
+    // },
     container: {
       center: true,
       padding: "15px",
@@ -30,6 +30,11 @@ module.exports = {
         "upto-lg-screens-nav-menu": "0 0 5px rgb(0 0 0 / 30%)",
         "close-nav-menu-btn": "2px 3px 3px rgb(0 0 0 / 10%)",
         btn: "0px 5px 15px rgb(0 0 0 / 20%)",
+      },
+
+      backgroundImage: {
+        "section-one-img-one": "url('/assets/images/section-01-bg-img-01.jpg')",
+        "section-one-img-two": "url('/assets/images/section-01-bg-img-02.jpg')",
       },
     },
   },

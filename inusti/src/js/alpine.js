@@ -2,11 +2,13 @@ import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 
+// LOGO STORE
 Alpine.store("logos", {
   logoLight: "./assets/logos/logo-light.png",
   logoDark: "./assets/logos/logo-dark.png",
 });
 
+// NAV-MENU STORE
 Alpine.store("navMenu", [
   {
     name: "Home",
@@ -177,6 +179,7 @@ Alpine.store("navMenu", [
   },
 ]);
 
+// OPEN NAV-MENU STORE
 Alpine.store("openNavMenu", {
   open: false,
 
@@ -245,6 +248,7 @@ Alpine.store("toggleNavItemSubMenu", {
   },
 });
 
+// CONTACTS STORE
 Alpine.store("contacts", {
   emailAddress: "contact@example.com",
   phoneNumber: "866 888 0000",
@@ -266,6 +270,37 @@ Alpine.store("contacts", {
       link: "#",
     },
   ],
+});
+
+// SLIDESHOW STORE
+Alpine.store("slideShow", {
+  slideIndex: 1,
+  slides: document.getElementsByClassName("hero-slide"),
+  dotIndicators: document.getElementsByClassName(
+    "hero-slideshow-dot-indicator"
+  ),
+
+  plusSlides: function (n) {
+    this.showSlides((this.slideIndex += n));
+  },
+
+  currentSlide: function (n) {
+    this.showSlides((this.slideIndex = n));
+  },
+
+  showSlides: function (n) {
+    let i;
+
+    if (n > this.slides.length) this.slideIndex = 1;
+
+    if (n < 1) this.slideIndex = this.slides.length;
+
+    setTimeout(this.incrementSlideIndex, 2000);
+  },
+
+  incrementSlideIndex: function () {
+    this.showSlides(this.slideIndex++);
+  },
 });
 
 Alpine.start();

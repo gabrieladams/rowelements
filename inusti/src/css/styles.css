@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply text-base font-normal leading-[34px]
-    text-base-font-color overflow-hidden bg-white;
+    text-base-font-color bg-white;
     font-family: "Poppins", sans-serif;
   }
 
@@ -49,7 +49,7 @@
   }
 
   .btn:hover {
-    @apply bg-[#da6900] shadow-btn;
+    @apply shadow-btn;
   }
 
   .btn-sm {
@@ -261,5 +261,105 @@
 
   .section-heading .title .sub-title .underline {
     @apply absolute bottom-[3px] left-0 w-full h-[2px] bg-primary-color;
+  }
+
+  /* BACKGROUND IMAGE */
+  .bg-img {
+    @apply bg-center bg-cover bg-no-repeat;
+  }
+}
+
+/* cubic-bezier(0.6, 0, 0.15, 1) */
+/* HERO-SLIDE-FADE-IN */
+.hero-slide-fade-in {
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: heroSlideFadeIn;
+}
+
+@keyframes heroSlideFadeIn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* HERO-SLIDE-SUB-TITLE-SHRINK-IN */
+.hero-slide-sub-title-shrink-in {
+  animation-duration: 600ms;
+  animation-timing-function: ease-in;
+  animation-delay: 400ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: heroSlideSubTitleShrinkIn;
+}
+
+@keyframes heroSlideSubTitleShrinkIn {
+  0% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* HERO-SLIDE-TITLE-SHRINK-IN */
+.hero-slide-title-shrink-in {
+  animation-duration: 700ms;
+  animation-timing-function: ease-in;
+  animation-delay: 1000ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: heroSlideTitleShrinkIn;
+}
+
+@keyframes heroSlideTitleShrinkIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(2.5);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+/* HERO-SLIDE-LINK-FADE-IN */
+.hero-slide-link-fade-in {
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+  animation-delay: 1800ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: heroSlideLinkFadeIn;
+}
+
+@keyframes heroSlideLinkFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

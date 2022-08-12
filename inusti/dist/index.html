@@ -49,29 +49,261 @@
 
     <title>Inusti</title>
   </head>
-  <body>
-    <!-- HEADER START -->
-    <header class="relative lg:static z-40 lg:z-[initial]">
-      <!-- HEADER SECTION TOP -->
+  <body
+    x-data="{
+      logo: {
+        logoLight: './assets/logos/logo-light.png',
+        logoDark: './assets/logos/logo-dark.png',
+      },
+
+      contacts: {
+        emailAddress: 'contact@example.com',
+        phoneNumber: '866 888 0000',
+        socialMedia: [
+          {
+            name: 'facebook',
+            link: '#',
+          },
+          {
+            name: 'twitter',
+            link: '#',
+          },
+          {
+            name: 'pinterest',
+            link: '#',
+          },
+          {
+            name: 'instagram',
+            link: '#',
+          },
+        ],
+      },
+
+      toggleNavMenu: {
+        open: false,
+      
+        toggle() {
+          this.open = !this.open;
+        },
+
+        setOpen: function(boolean) {
+          this.open = boolean
+        }
+      },
+    }"
+    class="font-['Poppins'_sans-serif] text-base font-normal leading-[34px] text-[#868686] bg-white"
+  >
+    <!-- /*********************
+    HEADER START
+    *********************/ -->
+    <header
+      x-data="{
+      navMenu: [
+      {
+        name: 'Home',
+        route: '#',
+        subMenu: [
+          {
+            name: 'Home 1',
+            route: '#',
+          },
+          {
+            name: 'Home 2',
+            route: '#',
+          },
+          {
+            name: 'Home 3',
+            route: '#',
+          },
+          {
+            name: 'Home 4',
+            route: '#',
+          },
+          {
+            name: 'Our Locations',
+            route: '#',
+          },
+        ],
+      },
+    
+      {
+        name: 'Projects',
+        route: '#',
+        subMenu: [
+          {
+            name: 'Projects I',
+            route: '#',
+          },
+          {
+            name: 'Projects II',
+            route: '#',
+          },
+          {
+            name: 'Projects III',
+            route: '#',
+          },
+        ],
+      },
+    
+      {
+        name: 'Services',
+        route: '#',
+        subMenu: [
+          {
+            name: 'Services I',
+            route: '#',
+          },
+          {
+            name: 'Services II',
+            route: '#',
+          },
+          {
+            name: 'Single',
+            route: '#',
+          },
+        ],
+      },
+    
+      {
+        name: 'Pages',
+        route: '#',
+        subMenu: [
+          {
+            name: 'Pages I',
+            route: '#',
+            subMenu: [
+              {
+                name: 'About',
+                route: '#',
+              },
+              {
+                name: 'Our History',
+                route: '#',
+              },
+              {
+                name: 'Our Team',
+                route: '#',
+              },
+              {
+                name: 'Our Awards',
+                route: '#',
+              },
+            ],
+          },
+    
+          {
+            name: 'Pages II',
+            route: '#',
+            subMenu: [
+              {
+                name: 'Events List',
+                route: '#',
+              },
+              {
+                name: 'Events Month',
+                route: '#',
+              },
+              {
+                name: 'Our Partner',
+                route: '#',
+              },
+              {
+                name: 'Careers',
+                route: '#',
+              },
+            ],
+          },
+    
+          {
+            name: 'Pages III',
+            route: '#',
+            subMenu: [
+              {
+                name: 'Shop',
+                route: '#',
+              },
+              {
+                name: 'Pricing',
+                route: '#',
+              },
+              {
+                name: 'Gallery',
+                route: '#',
+              },
+              {
+                name: 'Testimonials',
+                route: '#',
+              },
+              {
+                name: '404 Page',
+                route: '#',
+              },
+            ],
+          },
+        ],
+      },
+    
+      {
+        name: 'News',
+        route: '#',
+        subMenu: [
+          {
+            name: 'News I',
+            route: '#',
+          },
+          {
+            name: 'News II',
+            route: '#',
+          },
+          {
+            name: 'News III',
+            route: '#',
+          },
+        ],
+      },
+    
+      {
+        name: 'Contact',
+        route: '#',
+      },
+    ],
+
+    isNavItemHovered: false,
+
+    hoveredNavItemName: null,
+
+    setIsNavItemHovered: function(boolean) {
+      this.isNavItemHovered = boolean;
+    },
+
+    setHoveredNavItemName: function(navItemName) {
+      this.hoveredNavItemName = navItemName;
+    },
+    }"
+      class="relative lg:static z-40 lg:z-auto"
+    >
+      <!-- HEADER SECTION TOP-->
       <div
-        class="border-b border-[#2a2a2a] lg:border-none py-[30px] lg:py-0 bg-[#151515]"
+        class="border-b border-[#e4e4e4] lg:border-none py-[20px] lg:py-0 bg-white lg:bg-[#151515]"
       >
-        <div class="container">
+        <div class="container mx-auto px-[15px]">
           <div class="flex items-center">
+            <!-- SOCIAL MEDIA LINKS -->
             <div
-              class="hidden md:block mr-[30px] py-[5px] px-[15px] bg-[#2d2d2d]"
+              class="order-last lg:order-first hidden sm:block ml-auto lg:ml-0 mr-0 lg:mr-[30px] p-0 lg:py-[5px] lg:px-[15px] bg-transparent lg:bg-[#2d2d2d]"
             >
-              <template x-for="socialPlatform in $store.contacts.socialMedia">
+              <template x-for="socialPlatform in contacts.socialMedia">
+                <!-- SOCIAL MEDIA LINK -->
                 <a
                   x-bind:href="socialPlatform.link"
-                  class="inline-block mx-[10px]"
+                  class="inline-block mx-2.5"
                 >
+                  <!-- SOCIAL MEDIA LINK ICON -->
                   <span
-                    class="inline-block p-[5px] text-[#9aa3b2] hover:text-[#ff5316] transition-colors duration-100 ease-linear"
+                    class="inline-block p-0 lg:p-[5px] text-[14px] text-[#9aa3b2] hover:text-[#ff5316] transition-colors duration-100 ease-linear"
                   >
                     <i
                       x-bind:class="socialPlatform.name === 'facebook' ? 'fa-brands fa-facebook-square' : socialPlatform.name === 'twitter' ? 'fa-brands fa-twitter' : socialPlatform.name === 'pinterest' ? 'fa-brands fa-pinterest-p' : 'fa-brands fa-instagram'"
-                      class="text-[14px]"
                     ></i>
                   </span>
                 </a>
@@ -84,23 +316,27 @@
               Welcome to factory & industry business
             </div>
 
-            <div class="flex md:ml-auto">
+            <!-- CONTACTS -->
+            <div class="order-first lg:order-last flex ml-0 lg:ml-auto">
               <template
-                x-for="contact in [$store.contacts.emailAddress, $store.contacts.phoneNumber]"
+                x-for="contact in [contacts.emailAddress, contacts.phoneNumber]"
               >
+                <!-- CONTACT -->
                 <a
                   x-bind:href="contact === 'contact@example.com' ? 'mailto:contact@example.com' : 'tel:866 888 0000'"
-                  class="mr-[30px] md:mx-[15px] text-[12px] font-semibold leading-[14px]"
+                  class="flex items-center mr-[30px] lg:mr-0 lg:ml-[30px] text-[14px] lg:text-xs font-semibold leading-[14px]"
                 >
-                  <span class="inline-block text-[13px] text-primary-color">
+                  <!-- CONTACT ICON -->
+                  <span class="inline-block text-[13px] text-[#ff8f27]">
                     <i
                       x-bind:class="contact === 'contact@example.com' ? 'fa-solid fa-envelope' : 'fa-solid fa-phone'"
                     ></i>
                   </span>
 
+                  <!-- CONTACT TEXT -->
                   <span
                     x-text="contact"
-                    class="inline-block ml-[5px] text-[#9a9a9a]"
+                    class="inline-block ml-2.5 text-[#9a9a9a]"
                   ></span>
                 </a>
               </template>
@@ -111,60 +347,112 @@
 
       <!-- HEADER SECTION BOTTOM -->
       <div
-        class="static lg:absolute top-auto lg:top-[54px] left-auto lg:left-0 z-50 shadow-header-bottom-section py-5 w-full h-auto bg-[#151515] lg:bg-transparent transition-all duration-[50ms] ease-linear"
+        class="static lg:absolute top-auto lg:top-[54px] left-auto lg:left-0 z-40 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.1)] py-[15px] lg:py-5 w-full h-auto bg-white lg:bg-transparent transition-all duration-[50ms] ease-linear"
       >
-        <div class="container">
+        <div class="container mx-auto px-[15px]">
           <div class="flex justify-between items-center">
-            <!-- LOGO -->
+            <!-- LOGOS -->
+            <!-- LOGO - LG SCREENS AND ABOVE(992PX) -->
             <a
               href="#"
-              class="pb-[8px] max-w-[135px] lg:max-w-[150px] min-h-[20px]"
+              class="hidden lg:block pb-2 max-w-[135px] lg:max-w-[150px] min-h-[20px]"
             >
-              <img x-bind:src="$store.logos.logoLight" alt="logo" />
+              <img x-bind:src="logo.logoLight" alt="logo" />
+            </a>
+
+            <!-- LOGO - UPTO LG SCREENS(991PX) -->
+            <a
+              href="#"
+              class="block lg:hidden pb-2 max-w-[135px] lg:max-w-[150px] min-h-[20px]"
+            >
+              <img x-bind:src="logo.logoDark" alt="logo" />
             </a>
 
             <!-- NAV-MENU - LG SCREENS AND ABOVE(992PX)-->
-            <nav class="nav-menu lg-screens-and-above">
-              <template x-for="navItem in $store.navMenu">
+            <nav class="hidden lg:block">
+              <template x-for="navItem in navMenu">
                 <!-- NAV-ITEM -->
                 <div
-                  x-bind:class="function() {
+                  @mouseover="function() {
                     if(navItem.subMenu) {
-                        if(navItem.name === 'Home') {
-                            return 'nav-item main-menu-item with-sub-menu current-page';
-                        } else {
-                            return 'nav-item main-menu-item with-sub-menu';
-                        }
-                    } else {
-                        return 'nav-item main-menu-item';
+                      setIsNavItemHovered(true);
+                      setHoveredNavItemName(navItem.name);
                     }
                   }"
+                  @mouseout="function() {
+                    setIsNavItemHovered(false);
+                    setHoveredNavItemName(null);
+                  }
+                  "
+                  class="relative inline-block py-[22px] px-5 leading-normal"
                 >
-                  <a x-bind:href="navItem.route">
+                  <!-- NAV-LINK -->
+                  <a
+                    x-bind:href="navItem.route"
+                    x-bind:class="navItem.name === 'Home' ||hoveredNavItemName === navItem.name ? 'text-white' : 'text-[#bdbdbd]'"
+                    class="relative inline-block font-medium hover:text-white transition-colors duration-100 ease-linear"
+                  >
+                    <!-- NAV-LINK TEXT -->
                     <span x-text="navItem.name" class="inline-block"></span>
 
-                    <span x-show="navItem.subMenu" class="chevron">
+                    <!-- NAV-LINK CHEVRON -->
+                    <span
+                      x-show="navItem.subMenu"
+                      class="relative top-[1px] inline-block ml-[3px] w-2.5 h-2 text-[14px]"
+                    >
                       <i class="fa-solid fa-angle-down"></i>
                     </span>
 
-                    <span x-show="navItem.subMenu" class="underline"></span>
+                    <!-- NAV-LINK UNDERLINE  -->
+                    <span
+                      x-show="navItem.subMenu"
+                      x-bind:class="navItem.name === 'Home' || hoveredNavItemName === navItem.name ? 'w-full opacity-100' : 'w-0 opacity-0'"
+                      class="absolute -bottom-[2px] left-0 inline-block h-[2px] bg-[#ff8f27] transition-all duration-[350ms]"
+                    ></span>
                   </a>
 
                   <!-- LEVEL ONE SUB-MENU -->
+                  <!-- OTHER NAV-ITEMS SUB-MENU EXCEPT FOR PAGES NAV-ITEM -->
                   <div
-                    x-show="navItem.subMenu"
-                    x-bind:class="navItem.name === 'Pages' && 'left-1/2 flex pt-[25px] pb-[20px] !w-[680px] -translate-x-1/2'"
-                    class="sub-menu level-one"
+                    x-show="navItem.name !== 'Pages'"
+                    x-bind:class="hoveredNavItemName === navItem.name ? 'visible opacity-100' : 'invisible opacity-0'"
+                    class="absolute top-full z-50 shadow-[0_0_20px_0_rgba(62,28,131,0.1)] -mt-[1px] py-[15px] px-[25px] min-w-[250px] bg-white transition-all duration-[350ms]"
                   >
                     <template x-for="navItem in navItem.subMenu">
+                      <!-- LEVEL ONE SUB-MENU NAV-ITEM -->
                       <div
-                        x-bind:class="(navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III') && 'grow border-none py-[6px] px-[15px] '"
-                        class="nav-item"
+                        class="border-b border-[#e4e4e4] last:border-none py-[6px]"
                       >
+                        <!-- LEVEL ONE SUB-MENU NAV-LINK -->
                         <a
                           x-bind:href="navItem.route"
-                          x-bind:class="(navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III') && 'block border-b border-[#e4e4e4] mb-[5px] pb-2.5 font-medium !text-header-font-color'"
+                          class="block py-2.5 text-[15px] leading-[21px] text-[#868686] hover:text-[#ff8f27] transition-colors duration-100 ease-linear"
                         >
+                          <!-- LEVEL ONE SUB-MENU NAV-LINK TEXT -->
+                          <span
+                            x-text="navItem.name"
+                            class="inline-block"
+                          ></span>
+                        </a>
+                      </div>
+                    </template>
+                  </div>
+
+                  <!-- PAGES NAV-ITEM SUB-MENU -->
+                  <div
+                    x-show="navItem.name === 'Pages'"
+                    x-bind:class="hoveredNavItemName === navItem.name ? 'visible opacity-100' :  'invisible opacity-0'"
+                    class="absolute top-full left-1/2 z-50 shadow-[0_0_20px_0_rgba(62,28,131,0.1)] flex -mt-[1px] pt-[25px] pb-[20px] px-[25px] w-[680px] min-w-[250px] bg-white -translate-x-1/2 transition-all duration-[350ms]"
+                  >
+                    <template x-for="navItem in navItem.subMenu">
+                      <!-- LEVEL ONE SUB-MENU NAV-ITEM -->
+                      <div class="grow py-[6px] px-[15px]">
+                        <!-- LEVEL ONE SUB-MENU NAV-LINK -->
+                        <a
+                          x-bind:href="navItem.route"
+                          class="block border-b border-[#e4e4e4] mb-[5px] py-2.5 text-[15px] font-medium leading-[21px] text-[#151515] transition-colors duration-100 ease-linear"
+                        >
+                          <!-- LEVEL ONE SUB-MENU NAV-LINK TEXT -->
                           <span
                             x-text="navItem.name"
                             class="inline-block"
@@ -180,9 +468,14 @@
                             <div>
                               <a
                                 x-bind:href="navItem.route"
-                                x-text="navItem.name"
-                                class="!py-2 text-[15px] font-normal text-header-font-color"
-                              ></a>
+                                class="block py-2.5 text-[15px] leading-[21px] text-[#868686] hover:text-[#ff8f27] transition-colors duration-100 ease-linear"
+                              >
+                                <!-- LEVEL TWO SUB-MENU NAV-LINK TEXT -->
+                                <span
+                                  x-text="navItem.name"
+                                  class="inline-block"
+                                ></span>
+                              </a>
                             </div>
                           </template>
                         </div>
@@ -194,255 +487,421 @@
             </nav>
 
             <!-- NAV-MENU - UPTO LG SCREENS(991PX)-->
-            <nav
-              x-bind:class="$store.openNavMenu.open && 'open'"
-              class="nav-menu upto-lg-screens"
-            >
-              <template x-for="navItem in $store.navMenu">
-                <div
-                  x-bind:class="function() {
-                  if(navItem.subMenu) {
-                    if(navItem.name === 'Home') {
-
-                      if($store.toggleNavItemSubMenu.clickedNavItemName === 'Home' && $store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
-                        return 'with-sub-menu open-sub-menu current-page';
-
-                      } else {
-                        return 'with-sub-menu close-sub-menu current-page';
-                      } 
-                    } else {
-                      if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
-                        if($store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
-                          return 'with-sub-menu open-sub-menu';
+            <div
+              x-data="{
+                toggleNavItemSubMenu: {
+                  clickedNavItemName: null,
+                
+                  toggleStatus: {
+                    openHomeSubMenu: false,
+                    openProjectsSubMenu: false,
+                    openServicesSubMenu: false,
+                    openPagesSubMenu: false,
+                    openNewsSubMenu: false,
+                  },
+                
+                  setClickedNavItemName(navItemName) {
+                    this.clickedNavItemName = navItemName;
+                  },
+                
+                  setToggleStatus() {
+                    if (this.clickedNavItemName === 'Home') {
+                      for (toggle_status in this.toggleStatus) {
+                        if(toggle_status === 'openHomeSubMenu') {
+                          this.toggleStatus.openHomeSubMenu = !this.toggleStatus.openHomeSubMenu
+                        } else {
+                          this.toggleStatus[toggle_status] = false;
                         }
-
-                        if($store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
-                          return 'with-sub-menu open-sub-menu';
-                        }
-
-                        if($store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
-                          return 'with-sub-menu open-sub-menu';
-                        }
-
-                        if($store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
-                          return 'with-sub-menu open-sub-menu';
-                        }
-
-                        return 'with-sub-menu close-sub-menu';
-                        
-                      } else {
-                        return 'with-sub-menu close-sub-menu';
                       }
                     }
+            
+                    if (this.clickedNavItemName === 'Projects') {
+                      for (toggle_status in this.toggleStatus) {
+                        if(toggle_status === 'openProjectsSubMenu') {
+                          this.toggleStatus.openProjectsSubMenu = !this.toggleStatus.openProjectsSubMenu
+                        } else {
+                          this.toggleStatus[toggle_status] = false;
+                        }
+                      }
+                    }
+                
+                    if (this.clickedNavItemName === 'Services') {
+                      for (toggle_status in this.toggleStatus) {
+                        if(toggle_status === 'openServicesSubMenu') {
+                          this.toggleStatus.openServicesSubMenu = !this.toggleStatus.openServicesSubMenu
+                        } else {
+                          this.toggleStatus[toggle_status] = false;
+                        }
+                      }
+                    }
+                
+                    if (this.clickedNavItemName === 'Pages') {
+                      for (toggle_status in this.toggleStatus) {
+                        if(toggle_status === 'openPagesSubMenu') {
+                          this.toggleStatus.openPagesSubMenu = !this.toggleStatus.openPagesSubMenu
+                        } else {
+                          this.toggleStatus[toggle_status] = false;
+                        }
+                      }
+                    }
+                
+                    if (this.clickedNavItemName === 'News') {
+                      for (toggle_status in this.toggleStatus) {
+                        if(toggle_status === 'openNewsSubMenu') {
+                          this.toggleStatus.openNewsSubMenu = !this.toggleStatus.openNewsSubMenu
+                        } else {
+                          this.toggleStatus[toggle_status] = false;
+                        }
+                      }
+                    }
+                  },
+                }
+              }"
+              x-bind:class="toggleNavMenu.open ? 'left-0 visible opacity-100' : 'left-[-300px] invisible opacity-0'"
+              class="fixed top-0 bottom-0 z-50 block lg:hidden w-[345px] transition-all duration-[250ms] ease-linear"
+            >
+              <nav
+                class="shadow-[0_0_5px_rgba(0,0,0,0.3)] p-5 w-[300px] max-w-[300px] h-full bg-white overflow-y-auto"
+              >
+                <template x-for="navItem in navMenu">
+                  <!-- NAV-ITEM -->
+                  <div class="relative border-b border-[rgba(0,0,0,.1)]">
+                    <!-- NAV-LINK -->
+                    <a
+                      x-bind:href="navItem.route"
+                      x-bind:class="navItem.name === 'Home' ? 'text-[#ff8f27]' : 'text-[#151515]'"
+                      class="block py-3 px-2 text-[16px] font-medium hover:text-[#ff8f27] transition-colors duration-100 ease-linear"
+                    >
+                      <!-- NAV-LINK TEXT -->
+                      <span x-text="navItem.name" class="inline-block"></span>
+                    </a>
 
-                  } 
-                }"
-                  class="nav-item main-menu-item"
-                >
-                  <a x-bind:href="navItem.route">
-                    <span x-text="navItem.name" class="inline-block"></span>
-                  </a>
+                    <!-- LEVEL ONE SUB-MENU -->
+                    <div
+                      x-data="{
+                      childrenElemsRenderingComplete: false,
+                      homeNavItemSubMenuHeight: null,
+                      projectsNavItemSubMenuHeight: null,
+                      servicesNavItemSubMenuHeight: null,
+                      pagesNavItemSubMenuHeight: null,
+                      newsNavItemSubMenuHeight: null,
+                      num: 300
 
-                  <div x-show="navItem.subMenu" class="sub-menu level-one">
-                    <template x-for="navItem in navItem.subMenu">
-                      <div class="nav-item">
-                        <a
-                          x-bind:href="navItem.route"
-                          x-bind:class="navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III' && 'text-header-font-color'"
-                        >
-                          <span
-                            x-text="navItem.name"
-                            class="inline-block"
-                          ></span>
-                        </a>
+                    }"
+                      x-ref="navItemSubMenu"
+                      x-show="function() {
+                        if(toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
+                          if(toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+                            return true
+                          } else if(toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                            return true
+                          } else if(toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                            return true
+                          } else if(toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                            return true
+                          } else if(toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                            return true
+                          } else {
+                            return false
+                          }  
+                        } 
+                        
+                        return false
+                      }"
+                      x-transition:enter="transition-[max-height] ease-linear duration-700"
+                      x-transition:enter-start="max-h-0"
+                      x-transition:enter-end="navItem.name === 'Home' ? max-h-[270px] : navItem.name === 'Projects' || navItem.name === 'Services' || navItem.name === 'News' ? max-h-[168px] : max-h-[652px]"
+                      x-transition:leave="transition-[max-height] ease-linear duration-100"
+                      x-transition:leave-start="navItem.name === 'Home' ? max-h-[270px] : navItem.name === 'Projects' || navItem.name === 'Services' || navItem.name === 'News' ? max-h-[168px] : max-h-[652px]"
+                      x-transition:leave-end="max-h-0"
+                      class="overflow-hidden ease-linear"
+                    >
+                      <div class="pb-[15px] pl-[15px]">
+                        <template x-for="navItem in navItem.subMenu">
+                          <!-- LEVEL ONE SUB-MENU NAV-ITEM -->
+                          <div>
+                            <!-- LEVEL ONE SUB-MENU NAV-LINK -->
+                            <a
+                              x-bind:href="navItem.route"
+                              x-bind:class="navItem.name === 'Pages I' || navItem.name === 'Pages II' || navItem.name === 'Pages III' ? 'text-[#151515] border-b border-[#e4e4e4]' : 'text-[#868686]'"
+                              class="block py-[15px] px-[5px] text-[15px] leading-[21px] hover:text-[#ff8f27] transition-colors duration-100 ease-linear"
+                            >
+                              <!-- LEVEL ONE SUB-MENU NAV-LINK TEXT -->
+                              <span
+                                x-text="navItem.name"
+                                class="inline-block"
+                              ></span>
+                            </a>
+
+                            <!-- LEVEL TWO SUB-MENU -->
+                            <div
+                              x-show="navItem.subMenu"
+                              class="sub-menu level-two pl-[15px]"
+                            >
+                              <template x-for="navItem in navItem.subMenu">
+                                <!-- LEVEL TWO SUB-MENU NAV-ITEM -->
+                                <div>
+                                  <!-- LEVEL TWO SUB-MENU NAV-LINK -->
+                                  <a
+                                    x-bind:href="navItem.route"
+                                    class="block py-2 text-[15px] leading-[21px] text-[#868686] hover:text-[#ff8f27] transition-colors duration-100 ease-linear"
+                                  >
+                                    <!-- LEVEL TWO SUB-MENU NAV-LINK TEXT -->
+                                    <span
+                                      x-text="navItem.name"
+                                      class="inline-block"
+                                    ></span>
+                                  </a>
+                                </div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
 
                         <div
-                          x-show="navItem.subMenu"
-                          class="sub-menu level-two pl-[15px]"
-                        >
-                          <template x-for="navItem in navItem.subMenu">
-                            <div>
-                              <a
-                                x-bind:href="navItem.route"
-                                x-text="navItem.name"
-                                class="!py-2 text-[15px] font-normal text-header-font-color"
-                              ></a>
-                            </div>
-                          </template>
-                        </div>
+                          x-init="function() {
+                          childrenElemsRenderingComplete = true;
+
+                          if(navItem.name === 'Home') {
+                            homeNavItemSubMenuHeight = $refs.navItemSubMenu.clientHeight;
+                          }
+
+                          if(navItem.name === 'Projects') {
+                            projectsNavItemSubMenuHeight = $refs.navItemSubMenu.clientHeight;
+                          }
+
+                          if(navItem.name === 'Services') {
+                            servicesNavItemSubMenuHeight = $refs.navItemSubMenu.clientHeight;
+                          }
+
+                          if(navItem.name === 'Pages') {
+                            pagesNavItemSubMenuHeight = $refs.navItemSubMenu.clientHeight;
+                          }
+
+                          if(navItem.name === 'News') {
+                            newsNavItemSubMenuHeight = $refs.navItemSubMenu.clientHeight;
+                          }
+                      }"
+                        ></div>
                       </div>
-                    </template>
-                  </div>
+                    </div>
 
-                  <button
-                    x-show="navItem.subMenu"
-                    @click="function() {
-                        $store.toggleNavItemSubMenu.setClickedNavItemName(navItem.name);
-                        $store.toggleNavItemSubMenu.setToggleStatus();
+                    <!-- TOGGLE SUB-MENU BTN -->
+                    <button
+                      x-show="navItem.subMenu"
+                      @click="function() {
+                        toggleNavItemSubMenu.setClickedNavItemName(navItem.name);
+                        toggleNavItemSubMenu.setToggleStatus();
                     }"
-                    x-bind:class="function() {
-                      if($store.toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
-                        if($store.toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
-                          return 'show-minus-icon';
-                        }
-  
-                        if($store.toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
-                          return 'show-minus-icon';
-                        }
-  
-                        if($store.toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
-                          return 'show-minus-icon';
-                        }
-  
-                        if($store.toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
-                          return 'show-minus-icon';
-                        }
-  
-                        if($store.toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
-                          return 'show-minus-icon';
-                        }
-                      } 
-                      
-                      return 'show-plus-icon';
-                  }"
-                    class="toggle-sub-menu-btn"
-                  >
-                    <span class="icon plus-icon">
-                      <i class="fa-solid fa-plus"></i>
-                    </span>
+                      class="absolute top-3 right-0 w-[30px] h-[30px] text-[#85827d] transition-all duration-100 ease-linear"
+                    >
+                      <span
+                        x-bind:class="function() {
+                      if(toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
 
-                    <span class="icon minus-icon">
-                      <i class="fa-solid fa-minus"></i>
-                    </span>
-                  </button>
-                </div>
-              </template>
+                        if(toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+                          return 'invisible opacity-0';
+                        }
+
+                        if(toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                          return 'invisible opacity-0';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                          return 'invisible opacity-0';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                          return 'invisible opacity-0';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                          return 'invisible opacity-0';
+                        }
+                      }
+
+                      return 'visible opacity-100';
+                    }"
+                        class="absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 transition-all duration-100 ease-linear"
+                      >
+                        <i class="fa-solid fa-plus"></i>
+                      </span>
+
+                      <span
+                        x-bind:class="function() {
+                      if(toggleNavItemSubMenu.clickedNavItemName === navItem.name) {
+
+                        if(toggleNavItemSubMenu.toggleStatus.openHomeSubMenu) {
+
+                          return 'visible opacity-100';
+                        }
+
+                        if(toggleNavItemSubMenu.toggleStatus.openProjectsSubMenu) {
+                          return 'visible opacity-100';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openServicesSubMenu) {
+                          return 'visible opacity-100';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openPagesSubMenu) {
+                          return 'visible opacity-100';
+                        }
+  
+                        if(toggleNavItemSubMenu.toggleStatus.openNewsSubMenu) {
+                          return 'visible opacity-100';
+                        }
+                      }
+
+                      return 'invisible opacity-0';
+                    }"
+                        class="absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 transition-all duration-100 ease-linear"
+                      >
+                        <i class="fa-solid fa-minus"></i>
+                      </span>
+                    </button>
+                  </div>
+                </template>
+              </nav>
 
               <!-- CLOSE NAV-MENU BTN -->
-              <button class="close-btn">
-                <span>
-                  <i class="fa-solid fa-plus"></i>
+              <button
+                @click="toggleNavMenu.setOpen(false)"
+                class="absolute top-[100px] right-0 z-50 inline-flex justify-center items-center border border-[#e4e4e4] shadow-[2px_3px_3px_rgba(0,0,0,0.1)] w-[45px] h-[45px] text-[15px] text-[#151515] bg-white"
+              >
+                <span
+                  class="inline-flex justify-center items-center w-[25px] h-[25px] rounded-full border-2 border-[#151515]"
+                >
+                  <span class="mt-[2.5px]">
+                    <i class="fa-solid fa-xmark"></i>
+                  </span>
                 </span>
               </button>
-            </nav>
+            </div>
 
             <!-- GET FREE QUOTE LINK -->
-            <a href="#" class="hidden lg:block btn btn-sm hover:bg-[#da6900]">
+            <a
+              href="#"
+              class="hidden lg:block py-[18px] px-[30px] font-bold leading-[18px] tracking-[1.4px] text-center uppercase text-white bg-[#ff8f27] transition-all duration-[350ms] text-[12px] hover:bg-[#da6900]"
+            >
               Get a free quote
             </a>
 
-            <!-- OPEN(TOGGLE) NAV-MENU BTN -->
+            <!-- OPEN/TOGGLE NAV-MENU BTN -->
             <button
-              @click="$store.openNavMenu.toggle()"
-              class="flex items-center lg:hidden text-white"
+              @click="toggleNavMenu.toggle()"
+              class="flex items-center lg:hidden text-black"
             >
-              <i class="fa-solid fa-bars text-[28px]"></i>
+              <span class="text-[28px]">
+                <i class="fa-solid fa-bars"></i>
+              </span>
             </button>
           </div>
         </div>
       </div>
     </header>
-    <!-- HEADER END -->
+    <!-- /*********************
+    HEADER END
+    *********************/ -->
 
     <!-- /****************************
     HERO SLIDESHOW / SECTION ONE START
     ***************************/ -->
     <section
-      x-init="$store.slideShow.showSlides($store.slideShow.slideIndex)"
+      x-data="{
+        heroSlides: [
+          {
+            index: 1,
+            title: 'Build Everything With Passion',
+            linkText: 'Get to know us',
+            imgPath: './assets/images/slider/slider-one-img.jpg'
+          },
+
+          {
+            index: 2,
+            title: 'Making the Complex Simple',
+            linkText: 'Get A free quote',
+            imgPath: './assets/images/slider/slider-two-img.jpg'
+          }
+        ],
+
+        slideIndex: 1,
+
+        slides: document.getElementsByClassName('hero-slide'),
+
+        dotIndicators: document.getElementsByClassName(
+          'hero-slideshow-dot-indicator'
+        ),
+
+        plusSlides: function (n) {
+          this.showSlides((this.slideIndex += n));
+        },
+
+        currentSlide: function (n) {
+          this.showSlides((this.slideIndex = n));
+        },
+
+        showSlides: function (n) {
+          let i;
+      
+          if (n > this.slides.length) this.slideIndex = 1;
+      
+          if (n < 1) this.slideIndex = this.slides.length;
+        },
+      }"
+      x-init="showSlides(slideIndex)"
       class="relative h-[415px] sm:h-[450px] md:h-[675px] lg:h-[750px] xl:h-[939px] mb-80"
     >
-      <!-- HERO SLIDE ONE -->
-      <div
-        x-bind:class="$store.slideShow.slideIndex === 1 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
-        style="
-          background-image: url('./assets/images/slider/slider-one-img.jpg');
-        "
-        class="hero-slide absolute top-0 left-0 w-full h-full bg-img"
-      >
-        <div class="relative z-40 flex justify-center items-center h-full">
-          <div
-            class="basis-full sm:basis-10/12 md:basis-9/12 xl:basis-7/12 max-w-[840px] -mt-[20px] lg:-mt-0 xl:-mt-[65px] px-[15px] text-center text-white overflow-hidden"
-          >
-            <!-- HERO SLIDE SUB-TITLE -->
-            <span
-              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-sub-title-shrink-in'"
-              class="inline-block mb-[10px] lg:mb-[15px] xl:mb-[30px] w-full lg:w-[380px] lg:max-w-[380px] text-[15px] md:text-[18px] lg:text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
-              >Welcome to Factory & Industry Business</span
-            >
+      <!-- HERO SLIDE -->
 
-            <!-- HERO SLIDE TITLE -->
-            <h1
-              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-title-shrink-in'"
-              class="mb-[35px] md:mb-[50px] lg:mb-[50px] text-[40px] sm:text-[45px] md:text-[58px] lg:text-[72px] xl:text-[86px] font-black leading-[44px] md:leading-[72px] lg:leading-[84px] xl:leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
-            >
-              Build Everything With Passion
-            </h1>
-
-            <!-- HERO SLIDE LINK -->
-            <a
-              x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-link-fade-in'"
-              href="#"
-              class="btn btn-lg !p-4 md:!p-6 lg:py-[30px] lg:px-[50px] text-[14px] tracking-normal lg:tracking-[1.4px] opacity-0"
-            >
-              Get to know us
-            </a>
-          </div>
-        </div>
-
-        <!-- HERO SLIDE OVERLAY -->
+      <!-- x-bind:style="heroSlide.index === 1 ? 'background-color: yellow' : 'background-color: black'" -->
+      <!-- x-bind:style="heroSlide.index === 1 ? 'background-image: url('./assets/images/slider/slider-one-img.jpg')' : 'background-image: url('./assets/images/slider/slider-two-img.jpg')' " -->
+      <template x-for="heroSlide in heroSlides">
         <div
-          class="absolute top-0 left-0 w-full h-full bg-black opacity-50"
-        ></div>
-      </div>
-
-      <!-- HERO SLIDE TWO -->
-      <div
-        x-bind:class="$store.slideShow.slideIndex === 2 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
-        style="
-          background-image: url('./assets/images/slider/slider-two-img.jpg');
-        "
-        class="hero-slide relative hidden lg:block h-full bg-img"
-      >
-        <div class="relative z-40 flex justify-center items-center h-full">
-          <div
-            class="basis-7/12 max-w-[840px] -mt-[65px] text-center text-white overflow-hidden"
-          >
-            <!-- HERO SLIDE SUB-TITLE -->
-            <span
-              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-sub-title-shrink-in'"
-              class="inline-block mb-[30px] w-[380px] max-w-[380px] text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
-              >Welcome to Factory & Industry Business</span
+          x-bind:class="heroSlide.index === slideIndex ? 'hero-slide-fade-in' : 'invisible opacity-0'"
+          x-bind:style="heroSlide.index === 1 ? `background-image: url(${heroSlide.imgPath})` : `background-image: url(${heroSlide.imgPath})` "
+          class="hero-slide absolute top-0 left-0 w-full h-full bg-img"
+        >
+          <div class="relative z-40 flex justify-center items-center h-full">
+            <div
+              class="basis-full sm:basis-10/12 md:basis-9/12 xl:basis-7/12 max-w-[840px] -mt-[20px] lg:-mt-0 xl:-mt-[65px] px-[15px] text-center text-white overflow-hidden"
             >
+              <!-- HERO SLIDE SUB-TITLE -->
+              <span
+                x-bind:class="heroSlide.index === slideIndex && 'hero-slide-sub-title-shrink-in'"
+                class="inline-block mb-[10px] lg:mb-[15px] xl:mb-[30px] w-full lg:w-[380px] lg:max-w-[380px] text-[15px] md:text-[18px] lg:text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
+                >Welcome to Factory & Industry Business</span
+              >
 
-            <!-- HERO SLIDE TITLE -->
-            <h1
-              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-title-shrink-in'"
-              class="mb-[50px] text-[86px] font-black leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
-            >
-              Making the Complex Simple
-            </h1>
+              <!-- HERO SLIDE TITLE -->
+              <h1
+                x-text="heroSlide.title"
+                x-bind:class="heroSlide.index === slideIndex && 'hero-slide-title-shrink-in'"
+                class="mb-[35px] md:mb-[50px] lg:mb-[50px] text-[40px] sm:text-[45px] md:text-[58px] lg:text-[72px] xl:text-[86px] font-black leading-[44px] md:leading-[72px] lg:leading-[84px] xl:leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
+              ></h1>
 
-            <!-- HERO SLIDE LINK -->
-            <a
-              x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-link-fade-in'"
-              href="#"
-              class="btn btn-lg opacity-0"
-            >
-              Get A free quote
-            </a>
+              <!-- HERO SLIDE LINK -->
+              <a
+                x-text="heroSlide.linkText"
+                x-bind:class="heroSlide.index === slideIndex && 'hero-slide-link-fade-in'"
+                href="#"
+                class="btn btn-lg !p-4 md:!p-6 lg:py-[30px] lg:px-[50px] text-[14px] tracking-normal lg:tracking-[1.4px] opacity-0"
+              >
+              </a>
+            </div>
           </div>
-        </div>
 
-        <!-- HERO SLIDE OVERLAY -->
-        <div
-          class="absolute top-0 left-0 w-full h-full bg-black opacity-50"
-        ></div>
-      </div>
+          <!-- HERO SLIDE OVERLAY -->
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-black opacity-50"
+          ></div>
+        </div>
+      </template>
 
       <!-- HERO SLIDESHOW CONTROLS -->
       <!-- PREV -->
       <div
-        @click="$store.slideShow.plusSlides(-1)"
+        @click="plusSlides(-1)"
         class="absolute top-[300px] xl:top-[350px] left-[50px] xl:left-[100px] z-40 rounded-full border border-[#bdbdbd] hidden lg:block w-[70px] h-[70px] cursor-pointer"
       >
         <span
@@ -454,7 +913,7 @@
 
       <!-- NEXT -->
       <div
-        @click="$store.slideShow.plusSlides(1)"
+        @click="plusSlides(1)"
         class="absolute top-[300px] xl:top-[350px] right-[50px] xl:right-[100px] z-40 rounded-full border border-[#bdbdbd] hidden lg:block w-[70px] h-[70px] cursor-pointer"
       >
         <span
@@ -470,13 +929,13 @@
       >
         <span
           @click="$store.slideShow.currentSlide(1)"
-          x-bind:class="$store.slideShow.slideIndex === 1 ? 'bg-white' : 'bg-[#bdbdbd]'"
+          x-bind:class="heroSlide.index === slideIndex ? 'bg-white' : 'bg-[#bdbdbd]'"
           class="hero-slideshow-dot-indicator inline-block rounded-full w-[10px] h-[10px] cursor-pointer"
         ></span>
 
         <span
           @click="$store.slideShow.currentSlide(2)"
-          x-bind:class="$store.slideShow.slideIndex === 2 ? 'bg-white' : 'bg-[#bdbdbd]'"
+          x-bind:class="heroSlide.index === slideIndex ? 'bg-white' : 'bg-[#bdbdbd]'"
           class="hero-slideshow-dot-indicator inline-block rounded-full ml-[5px] w-[10px] h-[10px] cursor-pointer"
         ></span>
       </div>
@@ -485,9 +944,38 @@
     SLIDESHOW / SECTION ONE END
     ***************************/ -->
 
+    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+      recusandae enim assumenda. Sapiente dolore dicta reiciendis ex, neque
+      veniam nostrum facilis ratione minima explicabo sequi quaerat maiores
+      minus. -->
+    <!-- x-init="setTimeout(3000, function(){console.log('hello'); console.log($el.scrollHeight)}) " -->
+    <div
+      x-data="{
+      complete: false
+    }"
+      x-init="$watch('complete', value => console.log($el.scrollHeight))"
+    >
+      <template
+        x-for="content in ['1', '1', '1', '1', '1']"
+        x-init="console.log($el.scrollHeight)"
+      >
+        <p x-text="content"></p
+      ></template>
+      <div x-init="complete = true"></div>
+      <!-- <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p>
+      <p>One</p> -->
+    </div>
+
     <!-- PAGE OVERLAY WHEN NAV-MENU OPEN -->
     <div
-      x-show="$store.openNavMenu.open"
+      x-show="toggleNavMenu.open"
       class="fixed top-0 left-0 z-30 w-full h-full bg-[rgba(0,0,0,.6)]"
     ></div>
   </body>

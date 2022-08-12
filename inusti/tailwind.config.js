@@ -10,10 +10,10 @@ module.exports = {
     //   lg: "992px",
     //   xl: "1200px",
     // },
-    container: {
-      center: true,
-      padding: "15px",
-    },
+    // container: {
+    //   center: true,
+    //   padding: "15px",
+    // },
     extend: {
       colors: {
         "primary-color": "#ff8f27",

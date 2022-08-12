@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  body {
+  /* body {
     @apply text-base font-normal leading-[34px]
     text-base-font-color bg-white;
     font-family: "Poppins", sans-serif;
-  }
+  } */
 
   /* HEADER */
   h1,
@@ -61,19 +61,23 @@
   }
 
   /* NAV-MENU - LG SCREENS AND ABOVE(992px) */
+  /* added */
   .nav-menu.lg-screens-and-above {
     @apply hidden lg:block;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above .nav-item.main-menu-item {
     @apply relative inline-block py-[22px] px-5 leading-normal;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above .nav-item.main-menu-item a,
   .nav-menu.lg-screens-and-above .nav-item.main-menu-item.with-sub-menu a {
     @apply relative inline-block font-medium text-nav-item-font-color;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above .nav-item.main-menu-item a:hover,
   .nav-menu.lg-screens-and-above
     .nav-item.main-menu-item
@@ -83,6 +87,7 @@
     @apply text-white;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.main-menu-item.with-sub-menu
     a
@@ -90,6 +95,7 @@
     @apply absolute bottom-[-2px] left-0 inline-block w-0 h-[2px] opacity-0 bg-primary-color transition-all duration-[350ms];
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.main-menu-item.with-sub-menu.current-page
     a
@@ -101,6 +107,7 @@
     @apply w-full opacity-100;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.main-menu-item.with-sub-menu
     a
@@ -108,16 +115,19 @@
     @apply relative top-[1px] inline-block ml-[3px] w-2.5 h-2 text-[14px];
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above .nav-item.with-sub-menu .sub-menu.level-one {
     @apply absolute top-full z-50 shadow-nav-item-sub-menu -mt-[1px] py-[15px] px-[25px] min-w-[250px] invisible bg-white opacity-0 transition-all duration-[350ms];
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.with-sub-menu:hover
     .sub-menu.level-one {
     @apply visible opacity-100;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.with-sub-menu
     .sub-menu.level-one
@@ -125,6 +135,7 @@
     @apply border-b border-[#e4e4e4] py-[6px];
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.with-sub-menu
     .sub-menu.level-one
@@ -132,6 +143,7 @@
     @apply border-none;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.with-sub-menu
     .sub-menu.level-one
@@ -140,6 +152,7 @@
     @apply block p-[10px] text-[15px] text-base-font-color leading-[21px] transition-colors duration-100 ease-linear;
   }
 
+  /* added */
   .nav-menu.lg-screens-and-above
     .nav-item.with-sub-menu
     .sub-menu.level-one
@@ -150,26 +163,32 @@
 
   /* NAV-MENU - UPTO LG SCREENS(991px) */
 
+  /* added */
   .nav-menu.upto-lg-screens {
     @apply fixed top-0 bottom-0 left-[-300px] z-50 block lg:hidden shadow-upto-lg-screens-nav-menu p-5 w-[300px] max-w-[85%] invisible bg-white opacity-0 transition-all duration-[250ms] ease-linear;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens.open {
     @apply left-0 visible opacity-100;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item.main-menu-item {
     @apply relative border-b border-[rgba(0,0,0,.1)];
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item a {
     @apply block transition-colors duration-100 ease-linear;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item.main-menu-item a {
     @apply py-3 px-2 text-[16px] font-medium text-header-font-color;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu.close-sub-menu
     .sub-menu.level-one {
@@ -182,14 +201,17 @@
     @apply block;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item.with-sub-menu .toggle-sub-menu-btn {
     @apply absolute top-3 right-0 w-[30px] h-[30px] text-[#85827d] transition-all duration-100 ease-linear;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item.with-sub-menu .sub-menu.level-one {
     @apply pb-[15px] pl-[15px] leading-[21px];
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
     .sub-menu.level-one
@@ -210,10 +232,12 @@
     @apply text-primary-color;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens .nav-item.with-sub-menu .toggle-sub-menu-btn .icon {
     @apply absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 transition-all duration-100 ease-linear;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
     .toggle-sub-menu-btn.show-plus-icon
@@ -221,6 +245,7 @@
     @apply visible opacity-100;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
     .toggle-sub-menu-btn.show-minus-icon
@@ -228,6 +253,7 @@
     @apply invisible opacity-0;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
     .toggle-sub-menu-btn.show-plus-icon
@@ -235,6 +261,7 @@
     @apply invisible opacity-0;
   }
 
+  /* added */
   .nav-menu.upto-lg-screens
     .nav-item.with-sub-menu
     .toggle-sub-menu-btn.show-minus-icon

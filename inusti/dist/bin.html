@@ -1,0 +1,79 @@
+<!-- HERO SLIDE ONE -->
+<div
+  x-bind:class="$store.slideShow.slideIndex === 1 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
+  style="background-image: url('./assets/images/slider/slider-one-img.jpg')"
+  class="hero-slide absolute top-0 left-0 w-full h-full bg-img"
+>
+  <div class="relative z-40 flex justify-center items-center h-full">
+    <div
+      class="basis-full sm:basis-10/12 md:basis-9/12 xl:basis-7/12 max-w-[840px] -mt-[20px] lg:-mt-0 xl:-mt-[65px] px-[15px] text-center text-white overflow-hidden"
+    >
+      <!-- HERO SLIDE SUB-TITLE -->
+      <span
+        x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-sub-title-shrink-in'"
+        class="inline-block mb-[10px] lg:mb-[15px] xl:mb-[30px] w-full lg:w-[380px] lg:max-w-[380px] text-[15px] md:text-[18px] lg:text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
+        >Welcome to Factory & Industry Business</span
+      >
+
+      <!-- HERO SLIDE TITLE -->
+      <h1
+        x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-title-shrink-in'"
+        class="mb-[35px] md:mb-[50px] lg:mb-[50px] text-[40px] sm:text-[45px] md:text-[58px] lg:text-[72px] xl:text-[86px] font-black leading-[44px] md:leading-[72px] lg:leading-[84px] xl:leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
+      >
+        Build Everything With Passion
+      </h1>
+
+      <!-- HERO SLIDE LINK -->
+      <a
+        x-bind:class="$store.slideShow.slideIndex === 1 && 'hero-slide-link-fade-in'"
+        href="#"
+        class="btn btn-lg !p-4 md:!p-6 lg:py-[30px] lg:px-[50px] text-[14px] tracking-normal lg:tracking-[1.4px] opacity-0"
+      >
+        Get to know us
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO SLIDE OVERLAY -->
+  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+</div>
+
+<!-- HERO SLIDE TWO -->
+<div
+  x-bind:class="$store.slideShow.slideIndex === 2 ? 'hero-slide-fade-in' : 'invisible opacity-0'"
+  style="background-image: url('./assets/images/slider/slider-two-img.jpg')"
+  class="hero-slide relative hidden lg:block h-full bg-img"
+>
+  <div class="relative z-40 flex justify-center items-center h-full">
+    <div
+      class="basis-7/12 max-w-[840px] -mt-[65px] text-center text-white overflow-hidden"
+    >
+      <!-- HERO SLIDE SUB-TITLE -->
+      <span
+        x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-sub-title-shrink-in'"
+        class="inline-block mb-[30px] w-[380px] max-w-[380px] text-[21px] font-medium underline text-[#f1f1f1] scale-[1.5] overflow-hidden cursor-default"
+        >Welcome to Factory & Industry Business</span
+      >
+
+      <!-- HERO SLIDE TITLE -->
+      <h1
+        x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-title-shrink-in'"
+        class="mb-[50px] text-[86px] font-black leading-[92px] text-white invisible opacity-0 scale-[2.5] cursor-default"
+      >
+        Making the Complex Simple
+      </h1>
+
+      <!-- HERO SLIDE LINK -->
+      <a
+        x-bind:class="$store.slideShow.slideIndex === 2 && 'hero-slide-link-fade-in'"
+        href="#"
+        class="btn btn-lg opacity-0"
+      >
+        Get A free quote
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO SLIDE OVERLAY -->
+  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+</div>

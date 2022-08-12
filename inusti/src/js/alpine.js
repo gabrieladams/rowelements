@@ -298,9 +298,9 @@ Alpine.store("slideShow", {
     setTimeout(this.incrementSlideIndex, 2000);
   },
 
-  incrementSlideIndex: function () {
-    this.showSlides(this.slideIndex++);
-  },
+  // incrementSlideIndex: function () {
+  //   this.showSlides(this.slideIndex++);
+  // },
 });
 
 Alpine.start();
